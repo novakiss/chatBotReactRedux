@@ -1,0 +1,1 @@
+export const selectChatBot = state => state.app.modules.chatBot;
