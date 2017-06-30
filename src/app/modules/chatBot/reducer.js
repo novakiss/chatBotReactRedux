@@ -1,8 +1,7 @@
-import {GET_USER,SYMPTON_STEP,STEP_DONE,CHANGE_STEP,NEW_QUESTION,ANSWER} from './constants';
-
+import {GET_USER,SYMPTOM_STEP,STEP_DONE,CHANGE_STEP,NEW_QUESTION,ANSWER} from './constants';
 
 const initialState = {
-    currentStep : SYMPTON_STEP,
+    currentStep : SYMPTOM_STEP,
     stepDone : {},
     questionTypeId : 0 ,
     userId : 0,

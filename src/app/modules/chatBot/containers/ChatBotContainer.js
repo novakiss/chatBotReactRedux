@@ -18,6 +18,6 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps)(ChatBotContainer);
+export default connect(mapStateToProps)(ChatBot);
 
 
