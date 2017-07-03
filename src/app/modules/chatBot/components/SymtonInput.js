@@ -1,20 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {symptonInputDone as systomInputDoneAction} from '../actions';
+import { bindActionCreators } from 'redux';
 
-class SymtonInput extends React.Component {
-    onClickHandle = (e)=>{
-        e.preventDefault();
-        //this.props.goToQuestion();
-    };
+import {selectChatBot} from '../selectors';
+import {symptomInputDone as systomInputDoneAction} from '../actions';
 
-    render() {
-        return <div>
-            Sympton Input Success
-            <button onClick={(e) => {this.props.goToQuestion}}>NEXT</button>
-        </div>;
-    }
-}
+const SymtonInput = ({symptomInputDone}) => {
+    return <div>
+        Sympton Input Success
+        <button onClick={ symptomInputDone}>NEXT</button>
+    </div>;
 
-export default (SymtonInput)
+};
 
+const mapStateToProps = (state) => {
+    const {currentStep, stepDone} = selectChatBot(state);
+    return {currentStep, stepDone};
+};
+
+
+//2 Möglichkeiten use MapDispatchTo Props
+//const mapDispatchToProps = {symptomInputDone: systomInputDoneAction};
+
+const mapDispatchToPropsAction = dispatch => bindActionCreators({symptomInputDone: systomInputDoneAction}, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToPropsAction
+)(SymtonInput)

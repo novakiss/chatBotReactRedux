@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 
+
 class MessageList extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                {this.props.messages.map(item => (<div key = {item.id}>{item.text}</div>))}
+                {this.props.messages.map(item => {
+                    return (<div key={item.id}>{item.text}</div>)
+                })}
             </div>
-        )  ;
+        );
     }
 }
 
-export default MessageList;
+
+export default (MessageList);

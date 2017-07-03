@@ -4,20 +4,31 @@ import {
     QUESTION_STEP,
     ANSWER_STEP,
     CLOSE_STEP,
-    ANSWER,
+    NEW_ANSWER,
     STEP_DONE,
-    NEW_QUESTION,
     CHAT_BOT_ORDER
 } from './constants';
+import {selectChatBot} from './selectors';
 
-const changeStep = (step) => ({type: CHANGE_STEP, payload: step});
-const getNextStep =  (step) => ({
 
-});
+const changeStep = (step) => ( {type: CHANGE_STEP, payload: step} );
 
-const stepDone  = (step) => {
-    return {type:STEP_DONE, payload:step};
+const getNextStep = () => (dispatch, getState) => {
+    const stepsDone = selectChatBot(getState()).stepDone;
+    const nextStep = CHAT_BOT_ORDER.filter(step => !stepsDone[step])[0];
+    dispatch(changeStep(nextStep));
 };
+
+const stepDone = (step) => (dispatch) => {
+    dispatch({type: STEP_DONE, payload: step});
+    dispatch(getNextStep());
+};
+
+/**
+ * 2 cach su dung =>
+ // => {return...}
+ // => ()
+ */
 
 export const editSymptonInput = changeStep(SYMPTOM_STEP);
 export const editQuestion = changeStep(QUESTION_STEP);
@@ -25,40 +36,22 @@ export const editAnswer = changeStep(ANSWER_STEP);
 export const editClose = changeStep(CLOSE_STEP);
 
 
-
-
-export const symptonInputDone = () => {
-    changeStep(QUESTION_STEP);
-    return {type: STEP_DONE, payload: SYMPTOM_STEP}
+export const symptomInputDone = () => {
+    return stepDone(SYMPTOM_STEP);
 };
-
+/*
 export const questionDone = (step) => {
-    changeStep(ANSWER_STEP);
-    return {type: STEP_DONE, payload: QUESTION_STEP};
+    stepDone(QUESTION_STEP);
 };
-
-export const answerDone = (step) => {
-    changeStep(CLOSE_STEP);
-    return {type: STEP_DONE, payload: CLOSE_STEP};
-};
-
+*/
 //TODO:  get questionID
-
+/*
 export const newQuestion = (questionId) => {
-  return {type: NEW_QUESTION, payload: questionId  };
+    return {type: NEW_QUESTION, payload: questionId};
 };
-
+*/
 export const newAnswer = (answer) => {
-    return {type: ANSWER, payload: answer };
+    console.log(answer);
+    return {type: NEW_ANSWER, payload: answer};
 };
-
-
-
-
-
-
-
-
-
-
 

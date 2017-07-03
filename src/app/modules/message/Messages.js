@@ -2,6 +2,11 @@ import React from 'react';
 import logo from '../../../logo.svg';
 import MessageList from './MessageList';
 
+import {newAnswer as newAnswerAction} from '../chatBot/actions';
+import {selectChatBot} from  '../chatBot/selectors';
+
+import {connect} from 'react-redux';
+
 class Messages extends React.Component{
     state = {
         messages: [],
@@ -21,6 +26,9 @@ class Messages extends React.Component{
             messages: prevState.messages.concat(newItem),
             text: ''
         }));
+        //console.log(this.state.text);
+        this.props.newAnswer(this.state.text);
+
     };
 
     render () {
@@ -38,4 +46,12 @@ class Messages extends React.Component{
     }
 }
 
-export default (Messages);
+
+const mapStateToProps = {newAnswer : newAnswerAction};
+
+const mapDispatchToProps = (state) =>{
+    const {answer} = selectChatBot(state);
+    return {answer};
+};
+
+export default connect (mapDispatchToProps,mapStateToProps) (Messages);

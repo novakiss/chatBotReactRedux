@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {SYMPTOM_STEP,ANSWER_STEP,QUESTION_STEP,CLOSE_STEP} from '../constants';
+import {SYMPTOM_STEP,QUESTION_STEP} from '../constants';
 
 import Message from '../../message/Messages'
 

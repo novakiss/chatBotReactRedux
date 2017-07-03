@@ -1,4 +1,4 @@
-import {GET_USER,SYMPTOM_STEP,STEP_DONE,CHANGE_STEP,NEW_QUESTION,ANSWER} from './constants';
+import {GET_USER,SYMPTOM_STEP,STEP_DONE,CHANGE_STEP,NEW_QUESTION,NEW_ANSWER} from './constants';
 
 const initialState = {
     currentStep : SYMPTOM_STEP,
@@ -18,8 +18,9 @@ export default function reducer (state = initialState,action) {
           return {...state, questionTypeId:action.payload};
       case GET_USER:
           return {...state,userId: action.payload};
-      case ANSWER:
-          return {...state, answer:action.payload};
+      case NEW_ANSWER:
+          console.log(state.answer);
+          return {...state, answer:[...state.answer, [action.payload]]};
       default:
           return state;
   }
