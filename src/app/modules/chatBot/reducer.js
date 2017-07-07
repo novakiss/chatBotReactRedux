@@ -1,31 +1,10 @@
-import {GET_USER,SYMPTOM_STEP,STEP_DONE,CHANGE_STEP,NEW_QUESTION,NEW_ANSWER} from './constants';
+import  {combineReducers}  from 'redux';
 
-const initialState = {
-    currentStep : SYMPTOM_STEP,
-    stepDone : {},
-    questionTypeId : 0 ,
-    userId : 0,
-    answer : []
-};
+import step from './ducks/step';
+import symptom from './ducks/symptom';
+import messageUser from './ducks/messageUser';
+import question from './ducks/question';
 
-export default function reducer (state = initialState,action) {
-  switch (action.type) {
-      case STEP_DONE:
-          return {...state,stepDone: {...state.stepDone,[action.payload]:true}};
-      case CHANGE_STEP:
-          return {...state,currentStep : action.payload};
-      case NEW_QUESTION:
-          return {...state, questionTypeId:action.payload};
-      case GET_USER:
-          return {...state,userId: action.payload};
-      case NEW_ANSWER:
-          console.log(state.answer);
-          return {...state, answer:[...state.answer, [action.payload]]};
-      default:
-          return state;
-  }
-};
-
-
-
-
+export default combineReducers({
+    step, symptom,messageUser,question
+})

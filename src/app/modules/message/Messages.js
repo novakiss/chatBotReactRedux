@@ -26,7 +26,7 @@ class Messages extends React.Component{
             messages: prevState.messages.concat(newItem),
             text: ''
         }));
-        //console.log(this.state.text);
+
         this.props.newAnswer(this.state.text);
 
     };

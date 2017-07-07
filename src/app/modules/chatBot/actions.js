@@ -11,7 +11,7 @@ import {
 import {selectChatBot} from './selectors';
 
 
-const changeStep = (step) => ( {type: CHANGE_STEP, payload: step} );
+export const changeStep = (step) => ( {type: CHANGE_STEP, payload: step} );
 
 const getNextStep = () => (dispatch, getState) => {
     const stepsDone = selectChatBot(getState()).stepDone;
@@ -51,7 +51,22 @@ export const newQuestion = (questionId) => {
 };
 */
 export const newAnswer = (answer) => {
-    console.log(answer);
     return {type: NEW_ANSWER, payload: answer};
 };
 
+
+
+export function addTodo(text) {
+    return {
+        type:  'ADD_TODO',
+        text
+    }
+}
+
+
+export const changeStepTest = (text) =>(
+   {
+      type : CHANGE_STEP,
+      payload: text
+  }
+);
