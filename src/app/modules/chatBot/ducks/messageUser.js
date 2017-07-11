@@ -5,7 +5,6 @@ const initialState = {
         1: {
             messageId: 1,
             time: '',
-            typing: false,
             text: '',
         },
     },

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {QUESTION_STEP} from '../constants';
 
-import {selectChatBot} from '../selectors';
+import {selectStep} from '../selectors';
 
 
 const QuestionContainer = ({currentStep}) => {
@@ -11,12 +11,12 @@ const QuestionContainer = ({currentStep}) => {
         return <div>Change Success</div>
     }
 
-    return <div>Sympton Step false</div>
+    return <div>Question Step false</div>
 };
 
 export default connect(
     state => {
-        const {currentStep} = selectChatBot(state);
+        const {currentStep} = selectStep(state);
         return {currentStep};
     }
 )(QuestionContainer);

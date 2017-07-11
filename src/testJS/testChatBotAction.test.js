@@ -1,40 +1,35 @@
-import  {addTodo,changeStepTest as addTextAction,changeStep as changeStepAction} from '../app/modules/chatBot/actions';
-import {SYMPTOM_STEP,CHANGE_STEP } from '../app/modules/chatBot/constants';
+import  {changeStep as changeStepAction, stepDone as stepDoneAction,symptomInputDone as symptomInputDoneAction} from '../app/modules/chatBot/actions';
+import {SYMPTOM_STEP, CHANGE_STEP,STEP_DONE} from '../app/modules/chatBot/constants';
 
+const step = SYMPTOM_STEP;
 
-describe('test all Action' , ()  =>{
-    describe('test Addtodo', () => {
-        it('should create an action to add a todo', () => {
-            const text = 'Finish docs';
-            const expectedAction = {
-                type: 'ADD_TODO',
-                text
-            };
-            expect(addTodo(text)).toEqual(expectedAction)
-        })
+const expectedChangeStepAction = {
+    type: CHANGE_STEP,
+    payload: step
+};
+const expectedStepDoneAction = {
+    type: STEP_DONE ,
+    payload: step
+};
+//1.Mock the dispatch function with jest's built in mocking functions
+const mockDispatch = jest.fn();
+
+describe('test Action', () => {
+    it('Step must change', () => {
+        expect(changeStepAction(step)).toEqual(expectedChangeStepAction)
     });
 
 
-    describe('test addText', () => {
-        it('should create an action to add a todo', () => {
-            const step = SYMPTOM_STEP;
-            const expectedAction = {
-                type: CHANGE_STEP,
-                payload :step
-            };
-            expect(addTextAction(step)).toEqual(expectedAction)
-        })
+    //2.Call the action
+    stepDoneAction(SYMPTOM_STEP)(mockDispatch);
+
+    it('test Step Done', () => {
+        expect(mockDispatch).toHaveBeenCalledWith({type: STEP_DONE, payload : SYMPTOM_STEP})
     });
 
-    describe('test changeStep', () => {
-        it('Step must change', () => {
-            const step = SYMPTOM_STEP;
-            const expectedAction = {
-                type: CHANGE_STEP,
-                payload: step
-            };
-            expect(changeStepAction(step)).toEqual(expectedAction)
-        })
+    //3.Check it was called with the correct arguement
+    it('test SymtomInput Done',() =>{
+       expect(symptomInputDoneAction()).toEqual(expectedStepDoneAction)
     });
 });
 

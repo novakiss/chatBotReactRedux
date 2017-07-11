@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../logo.svg';
+
 import MessageList from './MessageList';
 
 import {newAnswer as newAnswerAction} from '../chatBot/actions';

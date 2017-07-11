@@ -9,9 +9,9 @@ export const SYMPTOM_INPUT_FINISH  = 'SYMPTOM_INPUT_FINISH';
 export const MESSAGER_USER = 'chatBOt/MESSAGE_USER';
 export const MESSAGE_USER_ID = 'chatBot/MESSAGE_USER_ID';
 
-export const TIME = 'chatBot/TIME';
+export const QUESTION = 'chatBot/QUESTION';
 export const QUESTION_TYPE = 'chatBot/QUESTION_TYPE';
-export const ANSWER_MESSAGE = 'chatBot/ANSWER_MESSAGE';
+export const QUESTION_MESSAGE = 'chatBot/ANSWER_MESSAGE';
 
 export const FINISH = 'FINISH';
 export const SYMPTOM_STEP = 'SYMPTOM_STEP';

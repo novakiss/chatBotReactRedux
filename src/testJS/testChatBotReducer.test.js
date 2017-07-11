@@ -1,31 +1,51 @@
-import  reducer from '../app/modules/chatBot/reducer';
-import {SYMPTOM_STEP, CHANGE_STEP,ANSWER_STEP} from '../app/modules/chatBot/constants';
+import  reducers from '../app/reducer';
 
-describe('todos reducer', () => {
-    it('should return the initial state', () => {
-        expect(reducer(undefined, {})).toEqual(
-            {
-                currentStep: SYMPTOM_STEP,
-                stepDone: {},
-                questionTypeId: 0,
-                userId: 0,
-                answer: []
+
+const expectedReducerModulTest = {
+        modules: {
+            chatBot: {
+                step: {
+                    currentStep: 'SYMPTOM_STEP',
+                    stepDone: {},
+                    finishConversation: false
+                },
+                symptom: {
+                    symptompInputMessage: '',
+                    symptomInputID: 0,
+                    finishSymptom: false
+                },
+                messageUser: {
+                    byId: {
+                        '1': {
+                            messageId: 1,
+                            time: '',
+                            text: ''
+                        }
+                    },
+                    allIDS: []
+                },
+                question: {
+                    byId: {
+                        '1': {
+                            messageId: 1,
+                            time: '',
+                            questionType: 0,
+                            text: ''
+                        }
+                    },
+                    allIDS: []
+                }
             }
-        );
-    });
-    const actionTest = {
-        type: CHANGE_STEP,
-        payload: ANSWER_STEP
-    };
-    it('currentStep Change', () => {
-        expect(reducer(undefined, actionTest)).toEqual(
-            {
-                currentStep: ANSWER_STEP,
-                stepDone: {},
-                questionTypeId: 0,
-                userId: 0,
-                answer: []
-            }
-        );
-    })
+        }
+    }
+;
+
+test('reducers', () => {
+    let state;
+    state = reducers(undefined, {});
+    expect(state).toEqual(expectedReducerModulTest);
 });
+
+
+
+

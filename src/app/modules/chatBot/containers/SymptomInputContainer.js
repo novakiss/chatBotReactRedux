@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 
 import {SYMPTOM_STEP} from '../constants';
 
-import {selectChatBot} from '../selectors';
-import SymtonInput from "../components/SymtonInput";
+import {selectStep} from '../selectors';
+import SymtomInput from "../components/SymtomInput";
 
 const SymptomInputContainer = ({currentStep}) => {
     if (currentStep === SYMPTOM_STEP) {
-        return <SymtonInput {...this.props}/>
+        return <SymtomInput {...this.props}/>
     }
 
     return <div>Sympton Step false</div>
@@ -16,7 +16,7 @@ const SymptomInputContainer = ({currentStep}) => {
 
 export default connect(
     state => {
-        const {currentStep} = selectChatBot(state);
+        const {currentStep} = selectStep(state);
         return {currentStep};
     }
 )(SymptomInputContainer);

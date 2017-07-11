@@ -18,7 +18,3 @@ export default function step (state = initialState,action) {
             return state;
     }
 };
-
-
-
-

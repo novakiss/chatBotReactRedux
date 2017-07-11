@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import {selectChatBot} from '../selectors';
 import {symptomInputDone as systomInputDoneAction} from '../actions';
 
-const SymtonInput = ({symptomInputDone}) => {
+const SymtomInput = ({symptomInputDone}) => {
     return <div>
         Sympton Input Success
         <button onClick={ symptomInputDone}>NEXT</button>
@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
     return {currentStep, stepDone};
 };
 
-
 //2 Möglichkeiten use MapDispatchTo Props
 //const mapDispatchToProps = {symptomInputDone: systomInputDoneAction};
 
@@ -27,4 +26,4 @@ const mapDispatchToPropsAction = dispatch => bindActionCreators({symptomInputDon
 export default connect(
     mapStateToProps,
     mapDispatchToPropsAction
-)(SymtonInput)
+)(SymtomInput)

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {selectChatBot} from '../selectors';
+import {selectStep} from '../selectors';
 
 import ChatBot from '../components/ChatBot';
 
@@ -12,7 +12,7 @@ class ChatBotContainer extends React.Component{
 }
 
 const mapStateToProps = state => {
-  const { currentStep,stepDone} =selectChatBot(state);
+  const { currentStep,stepDone} =selectStep(state);
   return {
       currentStep, stepDone
   }
