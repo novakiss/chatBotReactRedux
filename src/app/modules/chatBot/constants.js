@@ -14,6 +14,11 @@ export const QUESTION_TYPE = 'chatBot/QUESTION_TYPE';
 export const QUESTION_MESSAGE = 'chatBot/ANSWER_MESSAGE';
 
 export const FINISH = 'FINISH';
+
+export const FETCH_DATA = 'FETCH_DATA';
+export const POST_DATA = 'POST_DATA';
+export const ERROR_DATA ='ERROR_DATA';
+
 export const SYMPTOM_STEP = 'SYMPTOM_STEP';
 export const QUESTION_STEP = 'QUESTION_STEP';
 export const ANSWER_STEP = 'ANSWER_STEP';

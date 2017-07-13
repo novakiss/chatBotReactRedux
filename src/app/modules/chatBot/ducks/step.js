@@ -3,7 +3,8 @@ import {SYMPTOM_STEP,STEP_DONE,CHANGE_STEP,FINISH} from '../constants';
 const initialState = {
     currentStep : SYMPTOM_STEP,
     stepDone : {},
-    finishConversation: false
+    finishConversation: false,
+
 };
 
 export default function step (state = initialState,action) {
