@@ -18,6 +18,8 @@ export const FINISH = 'FINISH';
 export const FETCH_DATA = 'FETCH_DATA';
 export const POST_DATA = 'POST_DATA';
 export const ERROR_DATA ='ERROR_DATA';
+export const UPDATE_DATA = 'UPDATE_DATA';
+
 
 export const SYMPTOM_STEP = 'SYMPTOM_STEP';
 export const QUESTION_STEP = 'QUESTION_STEP';

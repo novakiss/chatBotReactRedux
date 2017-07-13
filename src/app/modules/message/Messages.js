@@ -31,6 +31,17 @@ class Messages extends React.Component{
 
     };
 
+
+    handleStartStopClick(){
+        let startTime = new Date();
+
+        setInterval(() => {
+            this.setState(previousState => {
+                return {timeElapsed:new Date() - startTime};
+            });
+        }, 100);
+    }
+
     render () {
         return <div className="App">
             <div className="App-header">

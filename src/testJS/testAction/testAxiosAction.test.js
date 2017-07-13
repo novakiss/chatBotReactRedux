@@ -80,9 +80,9 @@ describe('async actions', () => {
                 expect(store.getActions()[0]).toEqual(expectedErrorData);
             })
         });
-        it ('test Fetch Data Error ' ,() =>{
-            new Promise(getRequestErrorAction()).then ((e)=>{
-                expect (e).toEqual(expectedErrorData);
+        it('test Fetch Data Error ', () => {
+            new Promise(getRequestErrorAction()).then((e) => {
+                expect(e).toEqual(expectedErrorData);
             })
         })
 
@@ -100,8 +100,8 @@ describe('async actions', () => {
             })
         });
 
-        it('test Post Request response ',()=>{
-            new Promise(postRequestAction()).then(()=>{
+        it('test Post Request response ', () => {
+            new Promise(postRequestAction()).then(() => {
                 expect(e).toEqual(expectedPostData);
             })
         })

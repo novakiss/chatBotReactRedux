@@ -48,6 +48,20 @@ export const actionMustTest = (a,b) =>(dispatch) =>{
 };
 
 
+const functionA = (a) =>({
+   type: POST_DATA, payload: a
+});
+
+const functionB = (b) =>({
+    type: FETCH_DATA, payload: b
+});
+
+export const twoFunction = (a,b) => (dispatch) =>{
+   return dispatch(functionA(a))
+       .then (dispatch(functionB(b)))
+};
+
+
 export const getRequestAllgemein =  (a) => (dispatch) =>{
     return axios.get(a)
         .then(function (response) {

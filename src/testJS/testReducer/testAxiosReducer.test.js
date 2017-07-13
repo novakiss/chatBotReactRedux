@@ -1,11 +1,13 @@
 import axiosFetchDataReducer from '../../app/modules/chatBot/ducks/axiosFetchData';
-import {ERROR_DATA, POST_DATA, FETCH_DATA} from  '../../app/modules/chatBot/constants';
+import {ERROR_DATA, POST_DATA, FETCH_DATA,UPDATE_DATA} from  '../../app/modules/chatBot/constants';
 
 
 const initialState = {
     getData: {},
     postData: {},
-    error: {}
+    error: {},
+    updatedData: false,
+    updateData: {}
 };
 
 const testFetchData1 = {
@@ -20,17 +22,19 @@ const testFetchData1 = {
 
 const expectedFetchData = {
     getData: {
-        "1": [
+        "1":
             {
                 "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
                 "id": 1,
                 "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
                 "userId": 1
             }
-        ]
+
     },
     postData: {},
-    error: {}
+    error: {},
+    updatedData: false,
+    updateData: {}
 };
 
 const testFetchData2 = {
@@ -45,25 +49,27 @@ const testFetchData2 = {
 
 const expectedFetchData2Time = {
     getData: {
-        "1": [
+        "1":
             {
                 "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
                 "id": 1,
                 "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
                 "userId": 1
             }
-        ],
-        "2": [
+        ,
+        "2":
             {
                 "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
                 "id": 2,
                 "title": "qui est esse",
                 "userId": 1
             }
-        ]
+
     },
     postData: {},
-    error: {}
+    error: {},
+    updatedData: false,
+    updateData: {}
 };
 
 const testPostData = {
@@ -84,7 +90,9 @@ const expectedPostData = {
             lastName: 'xyz'
         }
     },
-    error: {}
+    error: {},
+    updatedData: false,
+    updateData: {}
 };
 
 const testPostData2 = {
@@ -110,7 +118,9 @@ const expectedPostData2 = {
             lastname: 'XYZ'
         }
     },
-    error: {}
+    error: {},
+    updatedData: false,
+    updateData: {}
 };
 
 const testErrorData = {
@@ -121,7 +131,29 @@ const testErrorData = {
 const expectedErrorData = {
     getData: {},
     postData: {},
-    error: "error will be displayed here"
+    error: "error will be displayed here",
+    updatedData: false,
+    updateData: {}
+};
+
+const testUpdateData = {
+    type: UPDATE_DATA,
+    payload: {
+        name: 'Test Name',
+        id: 101
+    }
+};
+
+const expectedUpdateData = {
+    getData: {},
+    postData: {},
+    error: {},
+    updatedData: true,
+    updateData: {
+        name: 'Test Name',
+        id: 101
+    }
+
 };
 
 
@@ -158,6 +190,11 @@ describe('test Axios', () => {
     it('test Error Data', () => {
         expect(axiosFetchDataReducer(undefined, testErrorData)).toEqual(expectedErrorData)
     });
+
+    it ('test Update Data ', () =>{
+        expect ( axiosFetchDataReducer(undefined,testUpdateData)).toEqual(expectedUpdateData);
+    });
+
 
 });
 
