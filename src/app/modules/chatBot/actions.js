@@ -10,6 +10,7 @@ import {
     FETCH_DATA,
     POST_DATA,
     ERROR_DATA,
+    UPDATE_DATA,
     CHAT_BOT_ORDER
 } from './constants';
 import {selectStep} from './selectors';
@@ -42,27 +43,12 @@ export const stepDone = (step) => (dispatch) => {
     dispatch(getNextStep());
 };
 
-export const actionMustTest = (a,b) =>(dispatch) =>{
-  dispatch({type: POST_DATA, payload: a});
-  dispatch({type: FETCH_DATA, payload: b});
+export const actionMustTest = (a, b) => (dispatch) => {
+    dispatch({type: POST_DATA, payload: a});
+    dispatch({type: FETCH_DATA, payload: b});
 };
 
-
-const functionA = (a) =>({
-   type: POST_DATA, payload: a
-});
-
-const functionB = (b) =>({
-    type: FETCH_DATA, payload: b
-});
-
-export const twoFunction = (a,b) => (dispatch) =>{
-   return dispatch(functionA(a))
-       .then (dispatch(functionB(b)))
-};
-
-
-export const getRequestAllgemein =  (a) => (dispatch) =>{
+export const getRequestAllgemein = (a) => (dispatch) => {
     return axios.get(a)
         .then(function (response) {
             dispatch({
@@ -71,39 +57,85 @@ export const getRequestAllgemein =  (a) => (dispatch) =>{
             });
         })
         .catch(function (error) {
-            dispatch({type: ERROR_DATA, payload: {status : error.response.status, statusText : error.response.statusText }});
+            console.log(error.response);
+            dispatch({
+                type: ERROR_DATA,
+                payload: {status: error.response.status, statusText: error.response.statusText,}
+            });
         });
 };
 
-
 //Post Request Allgemein
 
-export const postRequestAllgemein = (a,b) =>(dispatch) =>{
-      return axios.post(a,b)
-          .then(function(response){
-             dispatch({
-                 type: POST_DATA,
-                 payload: response.data
-             })
-          }).catch(function (error) {
-              dispatch({type: ERROR_DATA, payload: {status : error.response.status, statusText : error.response.statusText }});
-    })
+export const postRequestAllgemein = (a, b) => (dispatch) => {
+    return axios.post(a, b)
+        .then((response) => {
+            console.log(response);
+            dispatch({
+                type: POST_DATA,
+                payload: response.data
+            })
+        }).catch(function (error) {
+            if (error.response) {
+                dispatch({
+                    type: ERROR_DATA,
+                    payload: {
+                        status: error.response.status,
+                        statusText: error.response.statusText,
+                    }
+                });
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+        })
+};
+
+//PUT allgemein
+
+export const putRequestAllgemeine = (URL, data)=>(dispatch) =>{
+    return axios.put(URL,data)
+        .then((response) =>{
+            dispatch({
+                type: UPDATE_DATA,
+                payload:response.data
+            })
+        }).catch (err => {
+            if(err.response){
+                dispatch ({
+                    type: ERROR_DATA,
+                    payload: {
+                        status: err.response.status,
+                        statusText: err.response.statusText,
+                    }
+                })
+            }else if(err.request){
+                console.log(err.request);
+            }else {
+                console.log(err.message)
+            }
+        })
 };
 
 //GET request
-export const getRequest = ()  => {
-    return getRequestAllgemein(API_URL + '/posts/1');
+export const getRequest = () => {
+    return getRequestAllgemein(API_URL + '/posts/2');
 };
 
 //GET request Error
 
-export const getRequestError = () =>{
-  return getRequestAllgemein(API_URL + '/post/1')  ;
+export const getRequestError = () => {
+    return getRequestAllgemein(API_URL + '/post/1');
 };
 
 //POST Request
 
-export const postRequest = ()  =>(postRequestAllgemein(API_URL + '/posts', {
-        firstName: 'Test First Name',
-        lastName: 'Last Name'}));
+export const postRequest = () => (postRequestAllgemein(API_URL + '/posts', {
+    firstName: 'Test First Name',
+    lastName: 'Last Name'
+}));
+
+
+
 

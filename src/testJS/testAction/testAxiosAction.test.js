@@ -6,7 +6,8 @@ import {
     getRequest as getRequestAction,
     getRequestError as getRequestErrorAction,
     postRequestAllgemein as postRequestAllgemeinAction,
-    postRequest as postRequestAction
+    postRequest as postRequestAction,
+
 } from '../../app/modules/chatBot/actions';
 
 import {FETCH_DATA, POST_DATA, ERROR_DATA} from '../../app/modules/chatBot/constants';
@@ -94,6 +95,7 @@ describe('async actions', () => {
                 expect(e).toEqual(expectedPostData);
             })
         });
+
         it('test Post Request use store', () => {
             store.dispatch(postRequestAllgemeinAction(API_URL + '/posts', postDataTest)).then(() => {
                 expect(store.getActions()[0]).toEqual(expectedPostData)
@@ -114,6 +116,7 @@ describe('async actions', () => {
             })
         });
     });
+
 
 });
 
