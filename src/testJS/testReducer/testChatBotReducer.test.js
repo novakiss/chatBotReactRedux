@@ -1,4 +1,4 @@
-import  reducers from '../app/reducer';
+import  reducers from '../../app/reducer';
 
 
 const expectedReducerModulTest = {
