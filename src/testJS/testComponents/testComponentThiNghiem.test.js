@@ -11,12 +11,6 @@ describe('Link changes the class when hovered', () => {
         expect(wrapper.state().data).toBe('first State')
     });
 
-    //Check props
-    /*
-    it('Test Props ', () => {
-        expect(wrapper.props().testProps).toBe('some things wrong here')
-    });
-    */
 
     it('test h4',()=>{
         expect(wrapper.find('h4').length).toBe(1);  //So luong tag trong render
@@ -30,10 +24,14 @@ describe('Link changes the class when hovered', () => {
         expect(wrapper.state().data).toBe('second State')
     });
 
-    //full render
+    //https://stackoverflow.com/questions/41732318/test-setting-text-value-with-react-and-enzyme
 
-    it('full Render' ,() =>{
-        const wrapper = mount(<ComponentThiNghiem/>)
-    });
+    it ('test input onchange ', () =>{
+        expect(wrapper.state().text).toBe('');
+        wrapper.find('input').simulate('change',{target:{value: 'test'}});
+        expect(wrapper.state().text).toBe('test');
+    })
+
+
 
 });

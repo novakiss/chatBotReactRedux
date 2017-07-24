@@ -2,18 +2,22 @@ import React from 'react';
 
 export default class ComponentThiNghiem extends React.Component {
     state = {
-        data :'first State',
-        finish : false
+        data: 'first State',
+        finish: false,
+        text :  ''
     };
 
-    componentDidMount ( ) {
+    componentDidMount() {
         this.functionA();
     }
 
-    functionA = ( )=> {
-        this.setState = {finish :  false}
+    functionA = () => {
+        this.setState = {finish: false}
     };
 
+    handleChange =(e) => {
+        this.setState({text: e.target.value});
+    };
 
     render() {
         return (
@@ -22,7 +26,9 @@ export default class ComponentThiNghiem extends React.Component {
                 <a >
                     {this.props.testProps}
                 </a>
-                <button onClick={(e) => this.setState ({data: 'second State'})}>Test</button>
+                <input  onChange={this.handleChange} value ={this.state.text}/>
+
+                <button onClick={(e) => this.setState({data: 'second State'})}>Test</button>
             </div>
         );
     }
