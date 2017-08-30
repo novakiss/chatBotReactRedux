@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../logo.svg';
+
 import MessageList from './MessageList';
 
 import {newAnswer as newAnswerAction} from '../chatBot/actions';
@@ -44,14 +44,10 @@ class Messages extends React.Component{
 
     render () {
         return <div className="App">
-            <div className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <h2>Welcome to React Chatbot</h2>
-            </div>
             <form onSubmit={this.handleSubmit} >
+                <MessageList messages={this.state.messages} />
                 <input onChange={this.handleChange} value={this.state.text} />
                 <button type ="submit">Send</button>
-                <MessageList messages={this.state.messages} />
             </form>
         </div>
     }

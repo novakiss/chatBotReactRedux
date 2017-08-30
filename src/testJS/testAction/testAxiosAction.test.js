@@ -7,7 +7,7 @@ import {
     getRequestError as getRequestErrorAction,
     postRequestAllgemein as postRequestAllgemeinAction,
     postRequest as postRequestAction,
-
+    addContractorToJob
 } from '../../app/modules/chatBot/actions';
 
 import {FETCH_DATA, POST_DATA, ERROR_DATA} from '../../app/modules/chatBot/constants';
@@ -58,7 +58,7 @@ describe('async actions', () => {
 
         it('test for Get Request Allgemein use MockStore', () => {
             store.dispatch(getRequestAllgemeinAction(API_URL + '/posts/1')).then(() => {
-                // getactions liefert array zurück => alle ausgeführten aktionen in reihenfolge
+                // getactions liefert array zurück => alle ausgeführten aktionen in reihenfolgestate chat bot
                 expect(store.getActions()[0]).toEqual(expectedFetchData)
             })
         });
@@ -86,12 +86,12 @@ describe('async actions', () => {
                 expect(e).toEqual(expectedErrorData);
             })
         })
-
     });
 
     describe('test Post Request to Server response', () => {
         it('test Post Request to Server', () => {
             new Promise(postRequestAllgemeinAction(API_URL + '/posts', postDataTest)).then(e => {
+                console.log(e);
                 expect(e).toEqual(expectedPostData);
             })
         });
@@ -112,6 +112,7 @@ describe('async actions', () => {
     describe('test Post Request To server reject', () => {
         it('test Post Request Error import false URL', () => {
             new Promise(postRequestAllgemeinAction(API_URL + '/post', postDataTest)).then(e => {
+                console.log(e);
                 expect(e).toEqual(expectedErrorData);
             })
         });

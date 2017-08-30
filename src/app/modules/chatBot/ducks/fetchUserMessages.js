@@ -13,7 +13,6 @@ const initialState = {
     lastResponse: null, // eher logging-zwecke
 };
 
-
 const reducer = (state, action) => {
     switch (action.type) {
         case SUCCEEDED:
@@ -52,7 +51,6 @@ const postUserMessage = (URL, data) => (dispatch) => {
             dispatch(succeeded(response));
             dispatch(newMessage(response));
         }).catch(ex => dispatch(failed(ex)))
-
 };
 
 const putUserMessage = (URL, data) => {

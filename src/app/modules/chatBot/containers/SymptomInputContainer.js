@@ -20,5 +20,3 @@ export default connect(
         return {currentStep};
     }
 )(SymptomInputContainer);
-
-

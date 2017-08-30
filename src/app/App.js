@@ -15,6 +15,7 @@ const App =()=> (
         <Route path="/tryAxios" exact component={TryWithAxios}/>
         <Route path="/message" exact component={Message}/>
         <Route path="/chatbot" exact component={ChatBot}/>
+        <Route path="/chatbotfinal" exact component={ChatBotFinal}/>
     </RouterSwitch>
 );
 
