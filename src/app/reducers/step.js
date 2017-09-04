@@ -1,4 +1,4 @@
-import {ANSWER_STEP,QUESTION_STEP,CHANGE_STEP} from '../constants';
+import {ANSWER_STEP,CHANGE_STEP} from '../constants';
 
 const initialState = {
     currentStep : ANSWER_STEP,

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 
 import appReducer from './app/reducer';
 
-export const reducer = combineReducers({app : appReducer });
+export const reducer = combineReducers({chatBot : appReducer });
 
 
 //To enable use applyMiddleware from redux

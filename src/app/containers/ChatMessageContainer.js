@@ -1,5 +1,5 @@
 
-
+/*
 const Container = ({ ids, byId }) => (<div>
     ids.map(id => <div style={{}}>
     <ChatMessageContainer id={id} />
@@ -17,3 +17,4 @@ const mapStateToProps = (state, props) => ({
 connect(
 
 )
+    */

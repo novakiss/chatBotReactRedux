@@ -13,7 +13,6 @@ class ChatBotContainer extends React.Component{
 
 const mapStateToProps =  state =>{
   const {currentStep} = stateSelector(state);
-  console.log(currentStep);
   return {currentStep};
 };
 

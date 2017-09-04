@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../App.css';
 
-import ChatBotContainer from './modules/chatBot/containers/ChatBotContainer';
+import ChatBotContainer from './containers/ChatBotContainer';
 //import ChatBot  from './modules/chatBot/containers/ChatBotContainer';
 /*import {
     Route,
