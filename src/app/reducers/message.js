@@ -9,24 +9,26 @@ import {MESSAGE} from '../constants';
  * }
  * }*/
 const initialState = {
-    byID :{},
-    chatIDs : [],
+    byID: {},
+    chatIDs: [],
 };
 
-export default function message  (state =initialState, action) {
-    switch (action.type){
+export default function message(state = initialState, action) {
+    switch (action.type) {
         case MESSAGE:
-            const messageUserID = action.payload.userID;
-            const messageBotID = action.payload.botID;
+            const messageUserID = action.payload.userMessageID;
+            const messageBotID = action.payload.botMessageID;
             const messageUserTime = action.payload.messageUserTime;
             const messageBotTime = action.payload.messageBotTime;
             const messageUser = action.payload.messageUser;
             const messageBot = action.payload.messageBot;
-            const entityUserByID = state.byId[messageUserID];
-            const entityBotByID = state.byId[messageBotID];
-            const changeUserEntity = {...entityUserByID,messageId : messageUserID, time : messageUserTime, text : messageUser};
-            const changeBotEntity = {...entityBotByID,messageId : messageBotID, time : messageBotTime, text : messageBot};
-            return {...state, byID: {...state.byId, [messageUserID] : changeUserEntity}, [messageBotID] : changeBotEntity , allIDs: [...state.chatIDs,...[messageUserID],...[messageBotID]]};
+            const changeUserEntity = {messageId: messageUserID, time: messageUserTime, text: messageUser};
+            const changeBotEntity = {messageId: messageBotID, time: messageBotTime, text: messageBot};
+            return {
+                ...state,
+                byID: {...state.byID, [messageUserID]: changeUserEntity, [messageBotID]: changeBotEntity},
+                chatIDs: [...state.chatIDs, ...[messageUserID], ...[messageBotID]]
+            };
         default:
             return state;
     }
