@@ -8,3 +8,5 @@ export const CHAT_BOT_ORDER =[QUESTION_STEP,ANSWER_STEP];
 export const ERROR = 'ERROR';
 export const SUCCESS = 'SUCCESS';
 export const START = 'START';
+
+export const MESSAGE = 'MESSAGE';

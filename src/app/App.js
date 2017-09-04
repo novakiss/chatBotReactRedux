@@ -1,6 +1,8 @@
 import React from 'react';
 
 import '../App.css';
+
+import ChatBotContainer from './modules/chatBot/containers/ChatBotContainer';
 //import ChatBot  from './modules/chatBot/containers/ChatBotContainer';
 /*import {
     Route,
@@ -8,7 +10,7 @@ import '../App.css';
 } from 'react-router-dom';
 */
 const App =()=> (
-    <div>HelloWorld</div>
+    <ChatBotContainer/>
 );
 
 export default App;
