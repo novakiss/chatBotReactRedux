@@ -1,20 +1,22 @@
-import {START, SUCCESS, ERROR} from '../constants';
+import {START, SUCCESS, ERROR, NEWMESSAGE} from '../constants';
 
 const initialState = {
     success: false,
     error: false,
-    loading:false,
+    loading: false,
     response: null,
 };
 
-export default function step(state= initialState, action) {
+export default function step(state = initialState, action) {
     switch (action.type) {
         case SUCCESS:
-            return {...state,success: true, response: action.payload};
+            return {...state, success: true, response: action.payload};
         case ERROR:
-            return {...state , error : true};
+            return {...state, error: true};
         case START:
-            return {...state,loading: false};
+            return {...state, loading: false};
+        case NEWMESSAGE:
+            return initialState;
         default:
             return state;
     }

@@ -8,3 +8,5 @@ export const SUCCESS = 'SUCCESS';
 export const START = 'START';
 
 export const MESSAGE = 'MESSAGE';
+
+export const NEWMESSAGE = 'NEWMESSAGE';
