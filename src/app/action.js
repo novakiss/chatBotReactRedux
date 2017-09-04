@@ -45,8 +45,8 @@ export const newMessage = (dispatch) =>{
     })
 };
 
-export const getResponseFromServer = (URL, data)  => {
-    start();
+export const getResponseFromServer = (URL, data) =>(dispatch) => {
+    dispatch(start());
     return axios.post (URL, data)
         .then((response)=>{
              success();

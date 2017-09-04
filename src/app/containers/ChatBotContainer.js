@@ -1,19 +1,16 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
-import {stateSelector} from '../selectors';
+import MessageContainer from './MessageContainer';
+import ChatContainer from './ChatContainer';
+import MessageInputContainer from './MessageInputContainer';
 
-class ChatBotContainer extends React.Component{
-    render(){
-        return (
-            <div>Hello</div>
-        )
-    }
-}
 
-const mapStateToProps =  state =>{
-  const {currentStep} = stateSelector(state);
-  return {currentStep};
+const ChatBotContainer = () => {
+    return <div>
+        <MessageInputContainer/>
+    </div>
 };
 
-export default connect(mapStateToProps)(ChatBotContainer);
+export default ChatBotContainer;
+
+

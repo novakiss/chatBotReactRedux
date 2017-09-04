@@ -3,7 +3,6 @@ import configureMockStore  from 'redux-mock-store';
 
 import {ANSWER_STEP, QUESTION_STEP, ERROR, START, SUCCESS, CHANGE_STEP} from '../../constants';
 
-
 import {changeStep, start} from '../../action';
 
 const middleware = [thunk];
