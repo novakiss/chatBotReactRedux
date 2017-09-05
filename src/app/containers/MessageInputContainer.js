@@ -1,29 +1,29 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-
-import {stateSelector} from '../selectors';
+import {stepSelector} from '../selectors';
 import {ANSWER_STEP} from '../constants';
 import MessageInput from '../components/MessageInput';
 
-import {changeStep, getResponseFromServer as getResponseFromServerAction} from '../action';
+import {getUserMessage as getUserMessageAction,changeStepToQuestionStep as changeStepToQuestionStepAction, getResponseFromServer as getResponseFromServerAction} from '../action';
 
-const MessageInputContainer = (currentStep, send) =>{
+const MessageInputContainer = ({currentStep, send ,message,changeStep}) =>{
     const disable = true;
-    if (currentStep !== ANSWER_STEP) {
-        return <MessageInput disable={!disable} send = {send}/>
+    if (currentStep === ANSWER_STEP) {
+        return <MessageInput disable= {!disable} sendToServer = {send} changeStep ={changeStep} sendMessage={message}/>
     }
-    return <MessageInput disable = {disable}/>
+    return <MessageInput disable = {disable} currentStep = {currentStep}/>
 };
 
 const mapStateToProps = (state) => {
-    const {currentStep} = stateSelector(state);
-    return {currentStep}
+    const {currentStep} = stepSelector(state);
+    return {currentStep};
 };
 
 const mapDispatchToProps = {
     send : getResponseFromServerAction,
-    //changeStep : changeStepAction
+    changeStep : changeStepToQuestionStepAction,
+    message : getUserMessageAction,
 };
 
 export default connect(mapStateToProps,mapDispatchToProps) (MessageInputContainer)

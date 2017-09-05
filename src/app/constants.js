@@ -7,6 +7,8 @@ export const ERROR = 'ERROR';
 export const SUCCESS = 'SUCCESS';
 export const START = 'START';
 
-export const MESSAGE = 'MESSAGE';
+export const BOTMESSAGE = 'BOTMESSAGE';
 
 export const NEWMESSAGE = 'NEWMESSAGE';
+
+export const USERMESSAGE = 'GETUSERMESSAGE';

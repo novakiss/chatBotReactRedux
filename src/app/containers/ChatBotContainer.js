@@ -1,7 +1,6 @@
 import React from 'react';
 
-import MessageContainer from './MessageContainer';
-import ChatContainer from './ChatContainer';
+
 import MessageInputContainer from './MessageInputContainer';
 
 

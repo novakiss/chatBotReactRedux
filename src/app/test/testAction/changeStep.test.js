@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureMockStore  from 'redux-mock-store';
 
-import {ANSWER_STEP, QUESTION_STEP, ERROR, START, SUCCESS, CHANGE_STEP} from '../../constants';
+import {ANSWER_STEP, QUESTION_STEP, CHANGE_STEP} from '../../constants';
 
 import {changeStep, start} from '../../action';
 
@@ -22,10 +22,5 @@ describe('test change step', () => {
         expect(store.getActions()).toEqual(expectedchangeStep);
     });
 });
-describe('test getResponseFromServer', () => {
-    it('test async getResponseFromServer', () => {
-        store.dispatch(start);
-        expect(store.getActions()).toEqual([{"payload": true, "type": "START"}])
-    })
-});
+
 

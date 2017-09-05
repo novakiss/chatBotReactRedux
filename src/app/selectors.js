@@ -1,4 +1,4 @@
-export const stateSelector = state => state.chatBot.state.step;
+export const stepSelector = state => state.chatBot.state.step;
 
 export const messageSelector = state => state.chatBot.state.message;
 

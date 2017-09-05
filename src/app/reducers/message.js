@@ -1,4 +1,4 @@
-import {MESSAGE} from '../constants';
+import {BOTMESSAGE,USERMESSAGE} from '../constants';
 /*
  * single-entity:
  * message:{
@@ -15,19 +15,30 @@ const initialState = {
 
 export default function message(state = initialState, action) {
     switch (action.type) {
-        case MESSAGE:
-            const messageUserID = action.payload.userMessageID;
-            const messageBotID = action.payload.botMessageID;
-            const messageUserTime = action.payload.messageUserTime;
-            const messageBotTime = action.payload.messageBotTime;
-            const messageUser = action.payload.messageUser;
-            const messageBot = action.payload.messageBot;
-            const changeUserEntity = {messageId: messageUserID, time: messageUserTime, text: messageUser};
-            const changeBotEntity = {messageId: messageBotID, time: messageBotTime, text: messageBot};
+        case BOTMESSAGE:
+            const {
+                botMessageID,
+                messageBotTime,
+                messageBot,
+            } = action.payload;
+            const changeBotEntity = {messageId: botMessageID, time: messageBotTime, text: messageBot};
             return {
                 ...state,
-                byID: {...state.byID, [messageUserID]: changeUserEntity, [messageBotID]: changeBotEntity},
-                chatIDs: [...state.chatIDs, ...[messageUserID], ...[messageBotID]]
+                byID: {...state.byID, [botMessageID]: changeBotEntity},
+                chatIDs: [...state.chatIDs, ...[botMessageID]]
+            };
+        case USERMESSAGE:
+            const {
+                userMessageID,
+                messageUserTime,
+                messageUser
+            } = action.payload;
+            const changeUserEntity = {messageID: userMessageID , time: messageUserTime , text : messageUser};
+
+            return {
+                ...state,
+                byID: {...state.byID, [userMessageID] : changeUserEntity },
+                chatIDs: [...state.chatIDs, ...[userMessageID]]
             };
         default:
             return state;
