@@ -1,6 +1,6 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import Message from './Message';
+//import Message from './Message';
 
 
 class MessageInput extends React.Component{
@@ -20,9 +20,9 @@ class MessageInput extends React.Component{
             messageUser : this.state.text,
             messageUserTime : time,
             userMessageID : Date.now()
-        }; 
+        };
         this.props.sendMessage(newItem);
-        //console.log(this.props.test);
+
         this.props.changeStep(this.props.currentStep);
 
         this.setState((prevState) => ({
@@ -34,7 +34,6 @@ class MessageInput extends React.Component{
     render () {
         return <div>
             <form onSubmit={this.handleSubmit} >
-                <Message messages={this.state.messages} />
                 <input onChange={this.handleChange} value={this.state.text} />
                 <button type ="submit" disabled={this.props.disable}>Send</button>
             </form>

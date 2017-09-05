@@ -1,4 +1,4 @@
-import {BOTMESSAGE,USERMESSAGE} from '../constants';
+import {BOTMESSAGE, USERMESSAGE} from '../constants';
 /*
  * single-entity:
  * message:{
@@ -9,8 +9,13 @@ import {BOTMESSAGE,USERMESSAGE} from '../constants';
  * }
  * }*/
 const initialState = {
-    byID: {},
-    chatIDs: [],
+    byID: {
+        0: {
+            id : 0,
+            text : 'Symptom Question hierrrrrrrrrrrrrrrrrrrrrrrrrrr'
+        }
+    },
+    chatIDs: [0],
 };
 
 export default function message(state = initialState, action) {
@@ -33,11 +38,11 @@ export default function message(state = initialState, action) {
                 messageUserTime,
                 messageUser
             } = action.payload;
-            const changeUserEntity = {messageID: userMessageID , time: messageUserTime , text : messageUser};
+            const changeUserEntity = {messageID: userMessageID, time: messageUserTime, text: messageUser};
 
             return {
                 ...state,
-                byID: {...state.byID, [userMessageID] : changeUserEntity },
+                byID: {...state.byID, [userMessageID]: changeUserEntity},
                 chatIDs: [...state.chatIDs, ...[userMessageID]]
             };
         default:

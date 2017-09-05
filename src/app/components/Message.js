@@ -1,14 +1,16 @@
 import React from 'react';
 
-
 class Message extends React.Component {
     render() {
+        const {text,type} = this.props;
         return (
-            <div>
-                {this.props.messages.map(item => (
-                    <div key={item.userMessageID}>{item.messageUser}</div>
-                ))}
-            </div>
+           <div>
+               {(type === 'user') ? (<div className="user">
+                   {text}
+               </div>):(<div className="bot">
+                   {text}
+               </div>)}
+           </div>
         );
     }
 }
