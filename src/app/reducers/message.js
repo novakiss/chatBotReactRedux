@@ -9,13 +9,8 @@ import {BOTMESSAGE, USERMESSAGE} from '../constants';
  * }
  * }*/
 const initialState = {
-    byID: {
-        0: {
-            id : 0,
-            text : 'Symptom Question hierrrrrrrrrrrrrrrrrrrrrrrrrrr'
-        }
-    },
-    chatIDs: [0],
+    byID: {},
+    chatIDs: [],
 };
 
 export default function message(state = initialState, action) {
@@ -26,7 +21,7 @@ export default function message(state = initialState, action) {
                 messageBotTime,
                 messageBot,
             } = action.payload;
-            const changeBotEntity = {messageId: botMessageID, time: messageBotTime, text: messageBot};
+            const changeBotEntity = {messageID: botMessageID, time: messageBotTime, text: messageBot};
             return {
                 ...state,
                 byID: {...state.byID, [botMessageID]: changeBotEntity},

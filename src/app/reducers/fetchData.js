@@ -16,7 +16,7 @@ export default function step(state = initialState, action) {
         case START:
             return {...state, loading: false};
         case NEWMESSAGE:
-            return initialState;
+            return {...state, success: false, error: false, loading : false};
         default:
             return state;
     }

@@ -21,20 +21,24 @@ class MessageInput extends React.Component{
             messageUserTime : time,
             userMessageID : Date.now()
         };
-        this.props.sendMessage(newItem);
+        this.props.sendToMessageContainer(newItem);
 
         this.props.changeStep(this.props.currentStep);
+
+        this.props.sendToServer(this.state.text);
 
         this.setState((prevState) => ({
             messages: prevState.messages.concat(newItem),
             text: ''
         }));
+
+
     };
 
     render () {
         return <div>
             <form onSubmit={this.handleSubmit} >
-                <input onChange={this.handleChange} value={this.state.text} />
+                <input onChange={this.handleChange} value={this.state.text} placeholder="type your answer here..."/>
                 <button type ="submit" disabled={this.props.disable}>Send</button>
             </form>
         </div>

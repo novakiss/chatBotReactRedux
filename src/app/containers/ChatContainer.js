@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import {messageSelector} from '../selectors';
 import MessageContainer from './MessageContainer';
 
-const ChatContainer =(message ) =>{
+import Chat from '../components/Chat';
+
+const ChatContainer =({message}) =>{
     return <MessageContainer/>
 };
 

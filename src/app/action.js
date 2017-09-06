@@ -17,7 +17,7 @@ export const changeStep = (step) => (dispatch) => {
 };
 
 export const changeStepToQuestionStep = () => changeStep(ANSWER_STEP);
-export const changeStepToAnswerStep =() => changeStep(QUESTION_STEP);
+const changeStepToAnswerStep =() => changeStep(QUESTION_STEP);
 
 const getNextStep = (step) => {
     if (step === ANSWER_STEP) {
@@ -28,7 +28,7 @@ const getNextStep = (step) => {
 
 export const start = () => ({type: START, payload: true});
 
-export const success = () => ({type: SUCCESS, payload: true});
+export const success = (res) => ({type: SUCCESS, payload: res});
 
 
 export const error = (error) => ({type: ERROR, payload: error});
@@ -43,7 +43,6 @@ export const getUserMessage = (mess)  => ({
     payload: mess
 });
 
-
 export const newMessage = () => (dispatch) => {
     dispatch({
         type: NEWMESSAGE
@@ -53,21 +52,33 @@ export const newMessage = () => (dispatch) => {
 
 const timeoutP = mSec => new Promise(resolve => setTimeout(resolve, mSec));
 
-const testData = {};
-const getTestData = () => testData;
 
-export const getResponseFromServer = (URL, data) => (dispatch) => {
+const getTestData = () => ({
+    botMessageID : Date.now(),
+    messageBotTime: new Date().toISOString(),
+    messageBot : 'Message Bot is here'});
+
+const lastResponse = {
+    botMessageID : Date.now(),
+    messageBotTime: new Date().toISOString(),
+    messageBot : 'Symptom Input wieder '
+};
+
+export const getResponseFromServer = (data) => (dispatch) => {
     dispatch(start());
     // axios.post (URL, data) // TODO AUSTAUSCHEN
-    timeoutP(100)
+    timeoutP(2000)
         .then(getTestData)
         .then((response) => {
-            dispatch(success());
             dispatch(getMessage(response));
+            dispatch(success(response));
             dispatch(newMessage());
+            dispatch(changeStepToAnswerStep())
         }).catch(e => {
         dispatch(error(e));
+        dispatch(getMessage(lastResponse));
         dispatch(newMessage());
+        dispatch(changeStepToAnswerStep());
     })
 };
 

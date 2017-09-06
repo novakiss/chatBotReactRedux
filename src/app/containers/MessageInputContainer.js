@@ -10,7 +10,7 @@ import {getUserMessage as getUserMessageAction,changeStepToQuestionStep as chang
 const MessageInputContainer = ({currentStep, send ,message,changeStep}) =>{
     const disable = true;
     if (currentStep === ANSWER_STEP) {
-        return <MessageInput disable= {!disable} sendToServer = {send} changeStep ={changeStep} sendMessage={message}/>
+        return <MessageInput disable= {!disable} sendToServer = {send} changeStep ={changeStep} sendToMessageContainer={message}/>
     }
     return <MessageInput disable = {disable} currentStep = {currentStep}/>
 };
