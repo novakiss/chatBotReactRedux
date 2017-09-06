@@ -1,19 +1,22 @@
 import React from 'react';
 
-class Chat extends React.Component{
-    render () {
-        return  <div style={style}>
-            <p> Some one Text here. asdasdddddddsafsdgfsdgfsgdfgff
-                ffffff
-                fffffffffffffafasdfbgthdtgfwsefg</p>
-        </div>
-    }
-}
+import MessageContainer from '../containers/MessageContainer';
+
+const Chat = () => {
+    return (
+        <div style={style}>
+            <MessageContainer/>
+        </div>)
+};
+
+
 
 const style = {
-    background : 'white',
-    width: '100px',
-    height: '100px',
+    marginleft: 'auto',
+    marginright: 'auto',
+    background: 'white',
+    width: '300px',
+    height: '300px',
     overflow: 'scroll',
 };
 

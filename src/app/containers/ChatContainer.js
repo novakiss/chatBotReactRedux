@@ -1,16 +1,16 @@
 import React  from 'react';
 import {connect} from 'react-redux';
 import {messageSelector} from '../selectors';
-import MessageContainer from './MessageContainer';
 
 import Chat from '../components/Chat';
 
 const ChatContainer =({message}) =>{
-    return <MessageContainer/>
+    return  <Chat message={message}/>
 };
 
-const mapStateToProps =  (state,props) =>{
-  const {message} = messageSelector(state).byID[props.id];
+
+const mapStateToProps = (state) =>{
+  const {message} = messageSelector(state);
   return {message};
 };
 
