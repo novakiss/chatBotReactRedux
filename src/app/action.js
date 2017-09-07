@@ -61,7 +61,7 @@ const getTestData = () => ({
 const lastResponse = {
     botMessageID : Date.now(),
     messageBotTime: new Date().toISOString(),
-    messageBot : 'Symptom Input wieder '
+    messageBot : 'Symptom Input wieder'
 };
 
 export const getResponseFromServer = (data) => (dispatch) => {

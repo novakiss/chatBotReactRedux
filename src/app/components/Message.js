@@ -1,25 +1,28 @@
 import React from 'react';
+import withStyle from 'react-jss';
+const style = {
+    user: {
+        color: 'red'
+    },
+    bot: {
+        color: 'blue'
+    }
+};
 
 class Message extends React.Component {
     render() {
-        const {text,type} = this.props;
-        console.log(this.props.type);
+        const {text, type} = this.props;
+        const {user, bot} = this.props.classes;
         return (
-           <div>
-               {(type === 'user') ? (<div style={user}>
-                   {text}
-               </div>):(<div style={bot}>
-                   {text}
-               </div>)}
-           </div>
+            <div>
+                {(type === 'user') ? (<div className={user}>
+                    {text}
+                </div>) : (<div className={bot}>
+                    {text}
+                </div>)}
+            </div>
         );
     }
 }
-const user = {
-    color: 'red',
-};
 
-const bot ={
-  color : 'blue'
-};
-export default Message;
+export default withStyle(style) (Message);

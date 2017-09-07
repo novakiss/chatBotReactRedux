@@ -5,14 +5,19 @@ import {stepSelector} from '../selectors';
 import {ANSWER_STEP} from '../constants';
 import MessageInput from '../components/MessageInput';
 
-import {getUserMessage as getUserMessageAction,changeStepToQuestionStep as changeStepToQuestionStepAction, getResponseFromServer as getResponseFromServerAction} from '../action';
+import {
+    getUserMessage as getUserMessageAction,
+    changeStepToQuestionStep as changeStepToQuestionStepAction,
+    getResponseFromServer as getResponseFromServerAction
+} from '../action';
 
-const MessageInputContainer = ({currentStep, send ,message,changeStep}) =>{
+const MessageInputContainer = ({currentStep, send, message, changeStep}) => {
     const disable = true;
     if (currentStep === ANSWER_STEP) {
-        return <MessageInput disable= {!disable} sendToServer = {send} changeStep ={changeStep} sendToMessageContainer={message}/>
+        return <MessageInput disable={!disable} sendToServer={send} changeStep={changeStep}
+                             sendToMessageContainer={message}/>
     }
-    return <MessageInput disable = {disable} currentStep = {currentStep}/>
+    return <MessageInput disable={disable} />
 };
 
 const mapStateToProps = (state) => {
@@ -21,9 +26,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    send : getResponseFromServerAction,
-    changeStep : changeStepToQuestionStepAction,
-    message : getUserMessageAction,
+    send: getResponseFromServerAction,
+    changeStep: changeStepToQuestionStepAction,
+    message: getUserMessageAction,
 };
 
-export default connect(mapStateToProps,mapDispatchToProps) (MessageInputContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MessageInputContainer)

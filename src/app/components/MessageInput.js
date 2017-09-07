@@ -1,25 +1,29 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
-//import Message from './Message';
+import withStyle from 'react-jss';
 
+const style = {
+    form: {},
+    button: {},
+    input: {}
+};
 
-class MessageInput extends React.Component{
+class MessageInput extends React.Component {
     state = {
         message: '',
-        };
+    };
 
-    handleChange =(e) => {
+    handleChange = (e) => {
         this.setState({message: e.target.value});
     };
 
-    handleSubmit =(e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
         const d = new Date();
         const time = d.toISOString();
         const newItem = {
-            messageUser : this.state.message,
-            messageUserTime : time,
-            userMessageID : Date.now()
+            messageUser: this.state.message,
+            messageUserTime: time,
+            userMessageID: Date.now()
         };
         this.props.sendToMessageContainer(newItem);
 
@@ -34,14 +38,14 @@ class MessageInput extends React.Component{
 
     };
 
-    render () {
+    render() {
         return <div>
-            <form onSubmit={this.handleSubmit} >
+            <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} value={this.state.message} placeholder="type your answer here..."/>
-                <button type ="submit" disabled={this.props.disable}>Send</button>
+                <button type="submit" disabled={this.props.disable}>Send</button>
             </form>
         </div>
     }
 }
 
-export default MessageInput;
+export default withStyle(style)(MessageInput);
