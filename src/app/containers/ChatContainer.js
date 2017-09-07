@@ -4,14 +4,17 @@ import {messageSelector} from '../selectors';
 
 import Chat from '../components/Chat';
 
-const ChatContainer =({message}) =>{
-    return  <Chat message={message}/>
+const ChatContainer =({chatIDs}) =>{
+    chatIDs.map(i => console.log(i));
+    return  <div>
+        <Chat chatIDs = {chatIDs}/>
+        </div>
 };
 
 
 const mapStateToProps = (state) =>{
-  const {message} = messageSelector(state);
-  return {message};
+  const {chatIDs} = messageSelector(state);
+  return {chatIDs};
 };
 
 export default connect(mapStateToProps)(ChatContainer);

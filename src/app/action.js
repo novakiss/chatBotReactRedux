@@ -67,7 +67,7 @@ const lastResponse = {
 export const getResponseFromServer = (data) => (dispatch) => {
     dispatch(start());
     // axios.post (URL, data) // TODO AUSTAUSCHEN
-    timeoutP(2000)
+    timeoutP(200)
         .then(getTestData)
         .then((response) => {
             dispatch(getMessage(response));

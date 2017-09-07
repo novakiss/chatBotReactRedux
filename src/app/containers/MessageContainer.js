@@ -9,7 +9,7 @@ class MessageContainer extends React.Component{
 
     render(){
         return (<div>
-            {this.props.chatIDs.map(i=> {
+            {this.props.id.map(i=> {
                 if(this.props.currentStep === ANSWER_STEP){
                     return <Message key = {i} text = {this.props.byID[i].text} type ='user'/>
                 }else {
@@ -22,8 +22,8 @@ class MessageContainer extends React.Component{
 
 const mapStateToProps = (state) => {
     const {currentStep} = stepSelector(state);
-    const {chatIDs, byID} = messageSelector(state);
-    return {currentStep, chatIDs, byID};
+    const { byID} = messageSelector(state);
+    return {currentStep, byID};
 };
 
 export default connect(mapStateToProps)(MessageContainer);

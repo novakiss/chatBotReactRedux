@@ -5,11 +5,11 @@ import React from 'react';
 
 class MessageInput extends React.Component{
     state = {
-        messages: [],
-        text: ''};
+        message: '',
+        };
 
     handleChange =(e) => {
-        this.setState({text: e.target.value});
+        this.setState({message: e.target.value});
     };
 
     handleSubmit =(e) => {
@@ -17,7 +17,7 @@ class MessageInput extends React.Component{
         const d = new Date();
         const time = d.toISOString();
         const newItem = {
-            messageUser : this.state.text,
+            messageUser : this.state.message,
             messageUserTime : time,
             userMessageID : Date.now()
         };
@@ -25,11 +25,10 @@ class MessageInput extends React.Component{
 
         this.props.changeStep(this.props.currentStep);
 
-        this.props.sendToServer(this.state.text);
+        this.props.sendToServer(this.state.message);
 
         this.setState((prevState) => ({
-            messages: prevState.messages.concat(newItem),
-            text: ''
+            message: ''
         }));
 
 
@@ -38,7 +37,7 @@ class MessageInput extends React.Component{
     render () {
         return <div>
             <form onSubmit={this.handleSubmit} >
-                <input onChange={this.handleChange} value={this.state.text} placeholder="type your answer here..."/>
+                <input onChange={this.handleChange} value={this.state.message} placeholder="type your answer here..."/>
                 <button type ="submit" disabled={this.props.disable}>Send</button>
             </form>
         </div>

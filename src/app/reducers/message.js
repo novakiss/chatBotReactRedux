@@ -9,8 +9,14 @@ import {BOTMESSAGE, USERMESSAGE} from '../constants';
  * }
  * }*/
 const initialState = {
-    byID: {},
-    chatIDs: [],
+    byID: {
+        0: {
+            messageID: 0,
+            time : 0,
+            text: 'QuestionInput?'
+        }
+    },
+    chatIDs: [0],
 };
 
 export default function message(state = initialState, action) {
