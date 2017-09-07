@@ -5,25 +5,21 @@ import {stepSelector, messageSelector} from '../selectors';
 
 import Message from '../components/Message';
 
-class MessageContainer extends React.Component{
-
-    render(){
+class MessageContainer extends React.Component {
+    render() {
         return (<div>
-            {this.props.id.map(i=> {
-                if(this.props.currentStep === ANSWER_STEP){
-                    return <Message key = {i} text = {this.props.byID[i].text} type ='user'/>
-                }else {
-                    return <Message key = {i} text = {this.props.byID[i].text} type = 'bot'/>
-                }
-            })}
+                {this.props.currentStep ===ANSWER_STEP ?
+                    <Message key={this.props.id} text={this.props.text} type='user'/> :
+                    <Message key={this.props.id} text ={this.props.text} type ='bot' />}
             </div>
-    )};
+        )
+    };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,props) => {
     const {currentStep} = stepSelector(state);
-    const { byID} = messageSelector(state);
-    return {currentStep, byID};
+    const {text} = messageSelector(state).byID[props.id];
+    return {currentStep, text};
 };
 
 export default connect(mapStateToProps)(MessageContainer);
