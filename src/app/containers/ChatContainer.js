@@ -5,7 +5,6 @@ import {messageSelector} from '../selectors';
 import Chat from '../components/Chat';
 
 const ChatContainer =({chatIDs}) =>{
-    //chatIDs.map(i => console.log(i));
     return (<div>
         <Chat ids={chatIDs}/>
     </div>)

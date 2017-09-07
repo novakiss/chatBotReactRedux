@@ -1,19 +1,12 @@
 import {BOTMESSAGE, USERMESSAGE} from '../constants';
-/*
- * single-entity:
- * message:{
- * 1: {
- *   messageId: 1,
- *   time: '',
- *   text:  '...'
- * }
- * }*/
+
 const initialState = {
     byID: {
         0: {
             messageID: 0,
             time : 0,
-            text: 'QuestionInput?'
+            text: 'QuestionInput?',
+            type : 'bot'
         }
     },
     chatIDs: [0],
@@ -27,7 +20,7 @@ export default function message(state = initialState, action) {
                 messageBotTime,
                 messageBot,
             } = action.payload;
-            const changeBotEntity = {messageID: botMessageID, time: messageBotTime, text: messageBot};
+            const changeBotEntity = {messageID: botMessageID, time: messageBotTime, text: messageBot,type :'bot'};
             return {
                 ...state,
                 byID: {...state.byID, [botMessageID]: changeBotEntity},
@@ -39,7 +32,7 @@ export default function message(state = initialState, action) {
                 messageUserTime,
                 messageUser
             } = action.payload;
-            const changeUserEntity = {messageID: userMessageID, time: messageUserTime, text: messageUser};
+            const changeUserEntity = {messageID: userMessageID, time: messageUserTime, text: messageUser,type:'user'};
 
             return {
                 ...state,

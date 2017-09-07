@@ -1,16 +1,9 @@
 import React from 'react';
 
-import '../App.css';
+import ChatBot from './components/ChatBot';
 
-import ChatBotContainer from './containers/ChatBotContainer';
-//import ChatBot  from './modules/chatBot/containers/ChatBotContainer';
-/*import {
-    Route,
-    Switch as RouterSwitch
-} from 'react-router-dom';
-*/
 const App =()=> (
-    <ChatBotContainer/>
+    <ChatBot/>
 );
 
 export default App;

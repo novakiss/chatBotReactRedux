@@ -6,7 +6,7 @@ class Chat extends React.Component{
     render(){
         return (
             <div style={style}>
-                {this.props.ids.map(id => <MessageContainer key={id} id ={id}/>)}
+                {this.props.ids.map(id => <MessageContainer id ={id}/>)}
             </div>)
     }
 }

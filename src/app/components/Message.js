@@ -6,13 +6,20 @@ class Message extends React.Component {
         console.log(this.props.type);
         return (
            <div>
-               {(type === 'user') ? (<div className="user">
+               {(type === 'user') ? (<div style={user}>
                    {text}
-               </div>):(<div className="bot">
+               </div>):(<div style={bot}>
                    {text}
                </div>)}
            </div>
         );
     }
 }
+const user = {
+    color: 'red',
+};
+
+const bot ={
+  color : 'blue'
+};
 export default Message;
