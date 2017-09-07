@@ -1,17 +1,17 @@
 import fetchData from '../../reducers/fetchData';
 
-import {START,SUCCESS,ERROR} from '../../constants';
+import {START, SUCCESS, ERROR, NEWMESSAGE} from '../../constants';
 
 const expectedInitialState = {
     success: false,
     error: false,
-    loading:false,
+    loading: false,
     response: null,
 };
 
 const actionSuccess = {
     type: SUCCESS,
-    payload : 'payload of Action'
+    payload: 'payload of Action'
 };
 
 const expectedStateIfSuccess = {
@@ -22,39 +22,66 @@ const expectedStateIfSuccess = {
 };
 
 const actionError = {
-  type : ERROR
+    type: ERROR
 };
 
 const expectedStateIfError = {
     success: false,
-    error : true,
+    error: true,
     loading: false,
     response: null
 };
 
-const actionStart =  {
-  type: START
+const actionStart = {
+    type: START
 };
 
-const expectedStateIfStart ={
+const expectedStateIfStart = {
     success: false,
     error: false,
     loading: false,
-    response : null
+    response: null
 };
 
+const testState = {
+    success: true,
+    loading: true,
+    error: false,
+    response: {
+        data1: 'data1',
+        data2: 'data2',
+        data3: 'data3'
+    }
+};
+const actionNewMessage = {
+    type: NEWMESSAGE,
+};
+
+const expectedStateIfNewMessage = {
+    success: false,
+    loading: false,
+    error: false,
+    response: {
+        data1: 'data1',
+        data2: 'data2',
+        data3: 'data3'
+    }
+};
 
 describe('fetchData reducer', () => {
     it('das soll "initialState" zurückgeliefert', () => {
         expect(fetchData(undefined, {})).toEqual(expectedInitialState);
     });
     it('test State if start', () => {
-        expect(fetchData(undefined,actionStart)).toEqual(expectedStateIfStart)
+        expect(fetchData(undefined, actionStart)).toEqual(expectedStateIfStart)
     });
     it('test State if success', () => {
-        expect(fetchData(undefined,actionSuccess)).toEqual(expectedStateIfSuccess)
+        expect(fetchData(undefined, actionSuccess)).toEqual(expectedStateIfSuccess)
     });
     it('test State if error', () => {
-        expect(fetchData(undefined,actionError)).toEqual(expectedStateIfError)
+        expect(fetchData(undefined, actionError)).toEqual(expectedStateIfError)
+    });
+    it('test State if new Message', () => {
+        expect(fetchData(testState, actionNewMessage)).toEqual(expectedStateIfNewMessage)
     });
 });

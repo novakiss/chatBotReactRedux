@@ -1,86 +1,119 @@
 import message from '../../reducers/message';
 
-import {MESSAGE} from '../../constants';
+import {BOTMESSAGE, USERMESSAGE} from '../../constants';
 
 const expectedInitialState = {
-    byID: {},
-    chatIDs: []
+    byID: {
+        0: {
+            messageID: 0,
+            time: 0,
+            text: 'QuestionInput?',
+            type: 'bot'
+        }
+    },
+    chatIDs: [0],
 };
 
 const action = {
-    type: MESSAGE,
+    type: BOTMESSAGE,
     payload: {
-        userMessageID: 1,
-        botMessageID: 2,
-        messageUserTime: '',
+        botMessageID: 1,
         messageBotTime: '',
         messageBot: 'Message of Bot',
-        messageUser: 'Message of User',
-    }
-};
-
-const action2 = {
-    type: MESSAGE,
-    payload: {
-        userMessageID: 3,
-        botMessageID: 4,
-        messageUserTime: '',
-        messageBotTime: '',
-        messageBot: 'Message of Bot',
-        messageUser: 'Message of User',
     }
 };
 
 const expectedState = {
     byID: {
+        0: {
+            messageID: 0,
+            time: 0,
+            text: 'QuestionInput?',
+            type: 'bot'
+        },
         1: {
-            messageId: 1,
+            messageID: 1,
             time: '',
-            text: 'Message of User'
-        },
-        2: {
-            messageId: 2,
-            time: '',
-            text: 'Message of Bot'
-        },
+            text: 'Message of Bot',
+            type: 'bot'
+        }
     },
-    chatIDs: [1, 2]
+    chatIDs: [0, 1]
+};
+
+
+const action2 = {
+    type: USERMESSAGE,
+    payload: {
+        userMessageID: 3,
+        messageUserTime: '',
+        messageUser: 'Message of User',
+    }
 };
 
 const expectedState2 = {
     byID: {
-        1: {
-            messageId: 1,
-            time: '',
-            text: 'Message of User'
-        },
-        2: {
-            messageId: 2,
-            time: '',
-            text: 'Message of Bot'
+        0:{
+            messageID: 0,
+            time: 0,
+            text: 'QuestionInput?',
+            type: 'bot'
         },
         3: {
-            messageId: 3,
+            messageID: 3,
             time: '',
-            text: 'Message of User'
+            text: 'Message of User',
+            type: 'user'
+        }
+    },
+    chatIDs:[0,3]
+};
+
+const action3 = {
+    type: BOTMESSAGE,
+    payload: {
+        botMessageID: 5,
+        messageBotTime: '',
+        messageBot: 'Message of Bot',
+    }
+};
+
+const expectedState3 = {
+    byID: {
+        0:{
+            messageID: 0,
+            time: 0,
+            text: 'QuestionInput?',
+            type: 'bot'
         },
-        4: {
-            messageId: 4,
+        3: {
+            messageID: 3,
             time: '',
-            text: 'Message of Bot'
+            text: 'Message of User',
+            type: 'user'
+        },
+        5:{
+            messageID: 5,
+            time: '',
+            text: 'Message of Bot',
+            type: 'bot'
         },
     },
-    chatIDs: [1,2,3,4]
+    chatIDs: [0,3,5]
 };
 
 describe('step reducer', () => {
     it('das soll "initialState" zurückgeliefert', () => {
         expect(message(undefined, {})).toEqual(expectedInitialState);
     });
-    it('test if action.type is Message', () => {
+    it('test if action.type is Bot Message', () => {
         expect(message(undefined, action)).toEqual(expectedState)
     });
-    it('test  if action.type is Message and state is not init State', () => {
-        expect(message(expectedState, action2)).toEqual(expectedState2)
+    it ('test if action.type is User Message' ,() => {
+       expect(message(undefined, action2)).toEqual(expectedState2)
+    });
+
+    it('test  if state is not init State', () => {
+        expect(message(expectedState2, action3)).toEqual(expectedState3)
     });
 });

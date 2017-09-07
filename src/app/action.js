@@ -58,12 +58,6 @@ const getTestData = () => ({
     messageBotTime: new Date().toISOString(),
     messageBot : 'Message Bot is here'});
 
-const lastResponse = {
-    botMessageID : Date.now(),
-    messageBotTime: new Date().toISOString(),
-    messageBot : 'Symptom Input wieder'
-};
-
 export const getResponseFromServer = (data) => (dispatch) => {
     dispatch(start());
     // axios.post (URL, data) // TODO AUSTAUSCHEN
@@ -76,7 +70,6 @@ export const getResponseFromServer = (data) => (dispatch) => {
             dispatch(changeStepToAnswerStep())
         }).catch(e => {
         dispatch(error(e));
-        dispatch(getMessage(lastResponse));
         dispatch(newMessage());
         dispatch(changeStepToAnswerStep());
     })
