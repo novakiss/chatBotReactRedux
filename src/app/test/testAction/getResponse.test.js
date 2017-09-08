@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureMockStore  from 'redux-mock-store';
 
-import {ANSWER_STEP, QUESTION_STEP, ERROR, START, SUCCESS, CHANGE_STEP} from '../../constants';
+import {ANSWER_STEP, QUESTION_STEP, ERROR, START, SUCCESS} from '../../constants';
 
 import {getResponseFromServer} from '../../action';
 
@@ -10,49 +10,31 @@ const mockStore = configureMockStore(middleware);
 
 const store = mockStore({});
 
+const data = 'Test Data';
+
+const expectedResponseFromServerStart = [{
+    payload: true,
+    type : START
+}];
 
 describe('test get Response', () => {
-    it('test ', () => {
-        new Promise(getResponseFromServer('URL', 'data')).then((res) => {
-            expect(res).toEqual();
-        }).catch((e) => {
-            expect(e).toEqual();
-
+    it('test Post Request to Server', () => {
+        new Promise(postRequestAllgemeinAction(API_URL + '/posts', postDataTest)).then(e => {
+            console.log(e);
+            expect(e).toEqual(expectedPostData);
         })
-        // store.dispatch(changeStep(ANSWER_STEP));
-        //expect(store.getActions()).toEqual(expectedchangeStep);
-    });
-    it('test', () => {
-        const a = {
-            byID: {
-                0: {
-                    id: 0,
-                    text: 'Symptom Question'
-                },
-                1: {
-                    id: 1,
-                    text: 'dkmm'
-                }
-            },
-            chatIDs: [0, 1],
-        };
-        a.chatIDs.map(i => console.log(a.byID[i].text) );
     });
 
-    it ('test1' , () => {
-        const arrayy = [0,1];
-        const obj = {
-            0: {
-                id: 0,
-                text: 'Symptom Question'
-            },
-            1: {
-                id: 1,
-                text: 'dkmm'
-            }
-        };
-        arrayy.map(i=> console.log(obj[i].text));
 
+    it('test',()=>{
+       new Promise(getResponseFromServer(data)).then((e) =>{
+           console.log(e);
+       })
+   });
+
+    it('test2',()=>{
+      store.dispatch(getResponseFromServer(data));
+      expect(store.getActions()).toEqual(data)
     })
 });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyle from 'react-jss';
 const style = {
     user: {
@@ -24,5 +25,10 @@ class Message extends React.Component {
         );
     }
 }
+
+Message.PropTypes ={
+    text : PropTypes.string.isRequired,
+    type : PropTypes.string.isRequired,
+};
 
 export default withStyle(style) (Message);

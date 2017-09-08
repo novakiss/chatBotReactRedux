@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyle from 'react-jss';
 
 const style = {
@@ -7,7 +8,7 @@ const style = {
     input: {}
 };
 
-class MessageInput extends React.Component {
+export class MessageInput extends React.Component {
     state = {
         message: '',
     };
@@ -31,21 +32,25 @@ class MessageInput extends React.Component {
 
         this.props.sendToServer(this.state.message);
 
-        this.setState((prevState) => ({
-            message: ''
-        }));
-
-
+        this.setState({message: ''});
     };
 
     render() {
         return <div>
-            <form onSubmit={this.handleSubmit}>
+            <form>
                 <input onChange={this.handleChange} value={this.state.message} placeholder="type your answer here..."/>
-                <button type="submit" disabled={this.props.disable}>Send</button>
+                <button onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>Send</button>
             </form>
         </div>
     }
 }
+
+MessageInput.propTypes = {
+    sendToMessageContainer: PropTypes.func,
+    currentStep: PropTypes.string,
+    senToServer: PropTypes.func,
+    changeStep: PropTypes.func,
+    disable: PropTypes.bool.isRequired
+};
 
 export default withStyle(style)(MessageInput);

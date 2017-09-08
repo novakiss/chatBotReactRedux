@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyle  from 'react-jss';
-
+import PropTypes from 'prop-types';
 import MessageContainer from '../containers/MessageContainer';
 
 const style = {
@@ -12,6 +12,7 @@ const style = {
     }
 };
 
+
 class Chat extends React.Component{
     render(){
         const {message} = this.props.classes;
@@ -22,4 +23,7 @@ class Chat extends React.Component{
     }
 }
 
+Chat.PropTypes = {
+    ids: PropTypes.array.isRequired,
+};
 export default withStyle(style)(Chat);

@@ -27,17 +27,20 @@ const style = {
 class ChatBot extends React.Component{
     render(){
         const {chatBot,div,head} = this.props.classes;
-        return  (<div className={div}>
+        return  (
+            <div>
             <div className={head}> Chat bot</div>
             <div className={chatBot}>
             <ChatContainer/>
             </div>
             <MessageInputContainer/>
-        </div>);
+        </div>
+        );
 
     }
-
 }
+
 export default withStyle(style)(ChatBot);
+
 
 
