@@ -6,8 +6,8 @@ import Message from '../components/Message';
 
 const mapStateToProps = (state, props) => {
     const {currentStep} = stepSelector(state);
-    const {text, type} = messageSelector(state).byID[props.id];
-    return {currentStep, text, type};
+    const {text, type, medicine,noQuestion} = messageSelector(state).byID[props.id];
+    return {currentStep, text, type,medicine,noQuestion};
 };
 
 export default connect(mapStateToProps)(Message);

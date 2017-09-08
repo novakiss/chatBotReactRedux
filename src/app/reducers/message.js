@@ -1,15 +1,8 @@
 import {BOTMESSAGE, USERMESSAGE} from '../constants';
 
 const initialState = {
-    byID: {
-        0: {
-            messageID: 0,
-            time: 0,
-            text: 'QuestionInput?',
-            type: 'bot'
-        }
-    },
-    chatIDs: [0],
+    byID: {},
+    chatIDs: [],
 };
 
 export default function message(state = initialState, action) {
@@ -19,8 +12,10 @@ export default function message(state = initialState, action) {
                 botMessageID,
                 messageBotTime,
                 messageBot,
+                noQuestion,
+                medicine
             } = action.payload;
-            const changeBotEntity = {messageID: botMessageID, time: messageBotTime, text: messageBot, type: 'bot'};
+            const changeBotEntity = {messageID: botMessageID, time: messageBotTime, text: messageBot, noQuestion :noQuestion,medicine: medicine,type: 'bot'};
             return {
                 ...state,
                 byID: {...state.byID, [botMessageID]: changeBotEntity},

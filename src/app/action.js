@@ -10,7 +10,7 @@ import {
     USERMESSAGE
 } from './constants';
 
-//import axios from 'axios';
+import axios from 'axios';
 
 export const changeStepToQuestionStep = () => (dispatch) => dispatch(changeStep(ANSWER_STEP));
 
@@ -35,6 +35,11 @@ export const getResponseFromServer = (data) => (dispatch) => {
         dispatch(newMessage());
         dispatch(changeStepToAnswerStep());
     })
+};
+
+export const tryAxios = (URL, data) =>{
+    axios.post(URL,data)
+        .then(res => console.log(res));
 };
 
 const changeStep = (step) => (dispatch) => {
@@ -71,7 +76,9 @@ const timeoutP = mSec => new Promise(resolve => setTimeout(resolve, mSec));
 const getTestData = () => ({
     botMessageID: Date.now(),
     messageBotTime: new Date().toISOString(),
-    messageBot: 'Message Bot is here'
+    messageBot: 'Your next Question',
+    noQuestion:true,
+    medicine: 'Medicine'
 });
 
 

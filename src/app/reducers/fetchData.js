@@ -4,7 +4,7 @@ const initialState = {
     success: false,
     error: false,
     loading: false,
-    response: null,
+    response: {},
 };
 
 export default function step(state = initialState, action) {

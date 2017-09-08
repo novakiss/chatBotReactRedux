@@ -11,18 +11,24 @@ const style = {
 };
 
 class Message extends React.Component {
-    render() {
-        const {text, type} = this.props;
+    messageRender = () =>{
+        const {text, type,medicine,noQuestion} = this.props;
         const {user, bot} = this.props.classes;
-        return (
-            <div>
-                {(type === 'user') ? (<div className={user}>
-                    {text}
-                </div>) : (<div className={bot}>
-                    {text}
-                </div>)}
+        if(type=== 'user'){
+            return <div className={user}>{text}</div>
+        }else if(type=== 'bot' && !noQuestion){
+            return <div className={bot}> {text}</div>
+        }else {
+            return <div className={bot}>Keine Frage mehr. Ihre beste Medikament ist {medicine}</div>
+        }
+    };
+
+    render() {
+        return (<div>
+            {this.messageRender()}
             </div>
-        );
+        )
+
     }
 }
 

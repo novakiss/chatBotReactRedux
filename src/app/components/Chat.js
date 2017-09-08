@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import MessageContainer from '../containers/MessageContainer';
 
 const style = {
+    questionInput:{
+        color : 'blue'
+    },
     message: {
         background: '#e5e5e5',
         width: '300px',
@@ -15,9 +18,10 @@ const style = {
 
 class Chat extends React.Component{
     render(){
-        const {message} = this.props.classes;
+        const {message,questionInput} = this.props.classes;
         return (
             <div className={message}>
+                <div className={questionInput}>Question Input?</div>
                 {this.props.ids.map(id => <MessageContainer key ={id} id ={id}/>)}
             </div>)
     }

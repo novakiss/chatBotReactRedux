@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {stepSelector} from '../selectors';
+import {stepSelector,fetchDataSelector} from '../selectors';
 import {ANSWER_STEP} from '../constants';
 import MessageInput from '../components/MessageInput';
 
@@ -11,18 +11,19 @@ import {
     getResponseFromServer as getResponseFromServerAction
 } from '../action';
 
-const MessageInputContainer = ({currentStep, send, message, changeStep}) => {
-    const disable = true;
-    if (currentStep === ANSWER_STEP) {
-        return <MessageInput disable={!disable} sendToServer={send} changeStep={changeStep}
+const MessageInputContainer = ({currentStep, send, message, changeStep,response}) => {
+    if((!response.noQuestion || response.noQuestion ===null)&& currentStep ===ANSWER_STEP){
+        return <MessageInput disable={false} sendToServer={send} changeStep={changeStep}
                              sendToMessageContainer={message}/>
+
     }
-    return <MessageInput disable={disable} />
+    return <MessageInput disable={true} />
 };
 
 const mapStateToProps = (state) => {
     const {currentStep} = stepSelector(state);
-    return {currentStep};
+    const {response} = fetchDataSelector(state);
+    return {currentStep, response};
 };
 
 const mapDispatchToProps = {
