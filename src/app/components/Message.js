@@ -3,10 +3,44 @@ import PropTypes from 'prop-types';
 import withStyle from 'react-jss';
 const style = {
     user: {
-        color: 'red'
+        boxSizing: 'border-box',
+        float: 'left',
+        width: 'auto',
+        maxWidth: '80%',
+        position: 'relative',
+        clear: 'both',
+
+        background: '#95c2fd',
+        filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
+
+        border: 'solid 1px rgba(0,0,0,0.5)',
+        borderRadius: '20px',
+        boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
+        marginBottom :'20px',
+        padding: '6px 20px',
+        color: '#000',
+        textShadow: '0 1px 1px rgba(255,255,255,0.8)',
+        wordWrap : 'break-word'
     },
     bot: {
-        color: 'blue'
+        boxSizing: 'border-box',
+        float: 'right',
+        width: 'auto',
+        maxWidth: '80%',
+        position: 'relative',
+        clear: 'both',
+
+        background: '#95c2fd',
+        filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
+
+        border: 'solid 1px rgba(0,0,0,0.5)',
+        borderRadius: '20px',
+        boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
+        marginBottom :'20px',
+        padding: '6px 20px',
+        color: '#000',
+        textShadow: '0 1px 1px rgba(255,255,255,0.8)',
+        wordWrap : 'break-word'
     }
 };
 
@@ -15,7 +49,11 @@ class Message extends React.Component {
         const {text, type,medicine,noQuestion} = this.props;
         const {user, bot} = this.props.classes;
         if(type=== 'user'){
-            return <div className={user}>{text}</div>
+            return (<div>
+                <div className={user}>{text}</div>
+
+            </div>);
+
         }else if(type=== 'bot' && !noQuestion){
             return <div className={bot}> {text}</div>
         }else {
