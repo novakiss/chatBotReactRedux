@@ -1,6 +1,6 @@
-import {USERMESSAGE, NEWMESSAGE, SUCCESS,ERROR} from '../../constants';
+import {USERMESSAGE} from '../../constants';
 
-import {getUserMessage, testAction} from '../../action';
+import {getUserMessage} from '../../action';
 
 import thunk from 'redux-thunk';
 
@@ -18,20 +18,7 @@ const expectedGetUserMessage = [{
     payload: 'Message of User'
 }];
 
-const name = 'pascal';
-
-const expectNewMessage = [{
-    type: NEWMESSAGE
-}];
-
-const expectSuccess = [{
-    type: SUCCESS,
-    payload : 'pascal'
-}];
-
-const expectError = [{
-    type: SUCCESS
-}];
+const name = 'name';
 
 describe('test getUserMessageAction', () => {
     it('test this Action', () => {
@@ -40,16 +27,9 @@ describe('test getUserMessageAction', () => {
     });
 });
 
-describe('test testAction', () => {
-    it('test this Action', () => {
-        //store.dispatch(testAction(name));
-        //expect(store.getActions()).toEqual(expectNewMessage);
-        new Promise(testAction(name)).then(res =>{
-            console.log(res);})
-    });
 
 
-});
+
 
 
 
