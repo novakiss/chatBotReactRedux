@@ -21,7 +21,7 @@ export const getUserMessage = (mess) => (dispatch) =>
     }));
 
 
-export const getResponseFromServer = (data, questionId = 1 , score = null, userId= null,count= 0) => (dispatch) => {
+export const getResponseFromServer = (URL,data, questionId = 1 , score = null, userId= null,count= 0) => (dispatch) => {
     console.log(score);
     const answer = {
         answer: data,
@@ -31,7 +31,7 @@ export const getResponseFromServer = (data, questionId = 1 , score = null, userI
         count :count
     };
     dispatch(start());
-    axios.post('http://apoly.localhost/API/chatbot/post', answer)
+    axios.post(URL, answer)
         .then((response) => {
                 //console.log(response);
                 return (response.data.data);
