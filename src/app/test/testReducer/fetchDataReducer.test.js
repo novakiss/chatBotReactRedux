@@ -6,7 +6,7 @@ const expectedInitialState = {
     success: false,
     error: false,
     loading: false,
-    response: null,
+    response: {},
 };
 
 const actionSuccess = {
@@ -29,7 +29,7 @@ const expectedStateIfError = {
     success: false,
     error: true,
     loading: false,
-    response: null
+    response: {}
 };
 
 const actionStart = {
@@ -40,7 +40,7 @@ const expectedStateIfStart = {
     success: false,
     error: false,
     loading: false,
-    response: null
+    response: {}
 };
 
 const testState = {

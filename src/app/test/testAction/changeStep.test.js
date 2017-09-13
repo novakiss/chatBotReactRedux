@@ -3,7 +3,7 @@ import configureMockStore  from 'redux-mock-store';
 
 import { QUESTION_STEP, CHANGE_STEP} from '../../constants';
 
-import {changeStepToQuestionStep,tryAxios} from '../../action';
+import {changeStepToQuestionStep} from '../../action';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
@@ -23,6 +23,3 @@ describe('test change step', () => {
 });
 
 
-describe('test',() =>{
-    tryAxios ('https://jsonplaceholder.typicode.com/posts',{name: 'abc'});
-});

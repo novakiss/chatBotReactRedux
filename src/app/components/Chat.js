@@ -38,6 +38,7 @@ const style = {
 class Chat extends React.Component{
     render(){
         const {message,questionInput} = this.props.classes;
+
         return (
             <div className={message}>
                 <div className={questionInput}>Question Input?</div>

@@ -30,8 +30,7 @@ export class MessageInput extends React.Component {
 
         this.props.changeStep(this.props.currentStep);
 
-        this.props.sendToServer(this.state.message);
-
+        this.props.sendToServer(this.state.message,this.props.questionId,this.props.score,this.props.userId,this.props.count);
         this.setState({message: ''});
     };
 

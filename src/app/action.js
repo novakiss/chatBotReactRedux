@@ -20,27 +20,37 @@ export const getUserMessage = (mess) => (dispatch) =>
         payload: mess
     }));
 
-export const getResponseFromServer = (data) => (dispatch) => {
+
+export const getResponseFromServer = (data, questionId = 1 , score = null, userId= null,count= 0) => (dispatch) => {
+    console.log(score);
+    const answer = {
+        answer: data,
+        questionId: questionId,
+        score: score,
+        userId : userId,
+        count :count
+    };
     dispatch(start());
-    // axios.post (URL, data) // TODO AUSTAUSCHEN
-    timeoutP(200)
-        .then(getTestData)
+    axios.post('http://apoly.localhost/API/chatbot/post', answer)
         .then((response) => {
+                console.log(response);
+                return (response.data.data);
+            }
+        )
+        .then((response) => {
+            //console.log(response);
             dispatch(getBotMessage(response));
             dispatch(success(response));
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep())
         }).catch(e => {
+        console.log(e);
         dispatch(error(e));
         dispatch(newMessage());
         dispatch(changeStepToAnswerStep());
     })
 };
 
-export const tryAxios = (URL, data) =>{
-    axios.post(URL,data)
-        .then(res => console.log(res));
-};
 
 const changeStep = (step) => (dispatch) => {
     dispatch({type: CHANGE_STEP, payload: getNextStep(step)});
@@ -68,17 +78,17 @@ const getBotMessage = (response) => ({
 
 
 const newMessage = () => ({
-        type: NEWMESSAGE
-    });
-
-const timeoutP = mSec => new Promise(resolve => setTimeout(resolve, mSec));
-
-const getTestData = () => ({
-    botMessageID: Date.now(),
-    messageBotTime: new Date().toISOString(),
-    messageBot: 'Your next Question',
-    noQuestion:true,
-    medicine: 'Medicine'
+    type: NEWMESSAGE
 });
+/*
+ const timeoutP = mSec => new Promise(resolve => setTimeout(resolve, mSec));
 
+ const getTestData = () => ({
+ botMessageID: Date.now(),
+ messageBotTime: new Date().toISOString(),
+ messageBot: 'Your next Question',
+ noQuestion:true,
+ medicine: 'Medicine'
+ });
+ */
 
