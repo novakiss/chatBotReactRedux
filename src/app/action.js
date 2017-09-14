@@ -20,17 +20,18 @@ export const getUserMessage = (mess) => (dispatch) =>
         payload: mess
     }));
 
-export const getResponseFromServer = (URL,data, questionId = 1 , score = null, userId= null,count= 0) => (dispatch) => {
+export const getResponseFromServer = (data, questionId = 1, score = null, userId = null, count = 0) => (dispatch) => {
     const answer = {
         answer: data,
         questionId: questionId,
         score: score,
-        userId : userId,
-        count :count
+        userId: userId,
+        count: count
     };
     dispatch(start());
-    return axios.post(URL, answer)
+    return axios.post('http://apoly.localhost/API/chatbot/post', answer)
         .then((response) => {
+                console.log(response);
                 return (response.data.data)
             }
         )
@@ -47,7 +48,6 @@ export const getResponseFromServer = (URL,data, questionId = 1 , score = null, u
             dispatch(changeStepToAnswerStep());
         })
 };
-
 
 
 const changeStep = (step) => (dispatch) => {
@@ -67,7 +67,7 @@ const start = () => ({type: START, payload: true});
 
 const success = (res) => ({type: SUCCESS, payload: res});
 
-const error = (error) => ({type: ERROR, payload: error});
+const error = () => ({type: ERROR});
 
 const getBotMessage = (response) => ({
     type: BOTMESSAGE,

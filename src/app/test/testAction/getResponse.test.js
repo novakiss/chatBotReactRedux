@@ -1,7 +1,7 @@
 import {equal, notEqual, deepEqual} from 'assert'
 import configureMockStore  from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import axios from 'axios';
+import nock from 'nock';
 
 
 import {ANSWER_STEP, ERROR, START, SUCCESS, BOTMESSAGE, NEWMESSAGE, CHANGE_STEP} from '../../constants';
@@ -96,7 +96,24 @@ const score = {
 
 const store = mockStore();
 
+const expectedSuccessAction = [
+    {payload: true, type: START},
+    {
+        payload: undefined,
+        type: BOTMESSAGE
+    },
+    {payload: undefined, type: SUCCESS},
+    {type: NEWMESSAGE},
+    {
+        payload: ANSWER_STEP,
+        type: CHANGE_STEP
+    }];
+
 describe('async action', () => {
+    afterEach(() => {
+        nock.cleanAll();
+    });
+
     it('test input false symptom', () => {
         store.dispatch(getResponseFromServer(url, 'data')).then(() => {
             console.log(store.getActions());
@@ -115,10 +132,27 @@ describe('async action', () => {
         store.dispatch(getResponseFromServer(url, 20, 2, score, 3000, 1)).then(() => {
             console.log(store.getActions());
             expect(store.getActions()).toEqual(expectedSuccess)
+        }).catch(() => {
+            expect(store.getActions()).toEqual(expectError)
         })
-    })
+    });
 
+
+    it('fetching todos has been done', () => {
+        nock('http://apoly.localhost/API/')
+            .post('/chatbot/post')
+            .reply(200, {body : {info : []}})
+            .log(console.log);
+
+        const store = mockStore();
+
+        return store.dispatch(getResponseFromServer('data')).then(() => {
+            expect(store.getActions()).toEqual(expectedSuccessAction);
+        })
+    });
 });
+
+
 
 
 
