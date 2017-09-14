@@ -20,9 +20,7 @@ export const getUserMessage = (mess) => (dispatch) =>
         payload: mess
     }));
 
-
 export const getResponseFromServer = (URL,data, questionId = 1 , score = null, userId= null,count= 0) => (dispatch) => {
-    console.log(score);
     const answer = {
         answer: data,
         questionId: questionId,
@@ -31,10 +29,9 @@ export const getResponseFromServer = (URL,data, questionId = 1 , score = null, u
         count :count
     };
     dispatch(start());
-    axios.post(URL, answer)
+    return axios.post(URL, answer)
         .then((response) => {
-                //console.log(response);
-                return (response.data.data);
+                return (response.data.data)
             }
         )
         .then((response) => {
@@ -44,12 +41,13 @@ export const getResponseFromServer = (URL,data, questionId = 1 , score = null, u
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep())
         }).catch(e => {
-        console.log(e);
-        dispatch(error(e));
-        dispatch(newMessage());
-        dispatch(changeStepToAnswerStep());
-    })
+            console.log(e);
+            dispatch(error(e));
+            dispatch(newMessage());
+            dispatch(changeStepToAnswerStep());
+        })
 };
+
 
 
 const changeStep = (step) => (dispatch) => {
