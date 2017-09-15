@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import withStyle from 'react-jss';
 
 const style = {
-    form: {},
-    button: {},
+    form: {
+        textAlign: 'center',
+    },
+    button: {
+
+    },
     input: {}
 };
 
@@ -35,8 +39,9 @@ export class MessageInput extends React.Component {
     };
 
     render() {
+        const {form} = this.props.classes;
         return <div>
-            <form>
+            <form className={form}>
                 <input onChange={this.handleChange} value={this.state.message} placeholder="type your answer here..."/>
                 <button onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>Send</button>
             </form>

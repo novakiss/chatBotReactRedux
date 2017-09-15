@@ -30,7 +30,7 @@ const style = {
         height:'400px',
         margin: '0 auto',
         maxWidth: '600px',
-        overflow: 'scroll',
+        overflow: 'auto',
     }
 };
 
