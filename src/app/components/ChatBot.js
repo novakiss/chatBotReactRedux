@@ -4,36 +4,38 @@ import MessageInputContainer from '../containers/MessageInputContainer';
 import ChatContainer from '../containers/ChatContainer';
 
 const style = {
-    div: {
-        display: 'block',
-    },
     head: {
-        alignItems: 'center',
-        color: 'black',
-        display: 'flex',
-        fill: '#fff',
+        background: '#6e48aa',
         height: '56px',
-        width: '100px',
-        justifyContent: 'space-between',
-        padding: '0 10px',
-        margin : '0px auto'
-
+        color: '#ffffff',
+        fontSize :'xx-large'
     },
-    chatBot: {
-        marginTop : '2cm',
+    chatBot:{
+        textAlign: 'center',
+        maxWidth: '400px',
         margin: '0 auto',
-        alignItems: 'mid',
+        display: 'block',
+        background: '#f5f8fb',
+        borderRadius: '10px',
+        boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.15)',
+        fontFamily: 'monospace',
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: '999',
+        transform :'scale(1)',
+        transition: 'transform .3s ease',
+        fontSize: 'x-large',
+        marginTop: '30px'
     }
 };
 
 class ChatBot extends React.Component {
     render() {
-        const {chatBot, div} = this.props.classes;
+        const {chatBot,head} = this.props.classes;
         return (
-            <div>
-                <div className={chatBot}>
-                    <ChatContainer/>
-                </div>
+            <div className={chatBot}>
+                <div className={head}>Chatbot Projekt</div>
+                <ChatContainer/>
                 <MessageInputContainer/>
             </div>
         );

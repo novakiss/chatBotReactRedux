@@ -25,12 +25,11 @@ const style = {
         wordWrap : 'break-word'
     },
     message: {
-        background: '#e5e5e5',
         padding:'40px 20px',
         height:'400px',
         margin: '0 auto',
-        maxWidth: '600px',
         overflow: 'auto',
+
     }
 };
 
