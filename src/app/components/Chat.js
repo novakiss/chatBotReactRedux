@@ -46,7 +46,7 @@ class Chat extends React.Component {
         return (
             <div className={message}>
                 <div className={test}>
-                    <div className={questionInput}>Question Input?</div>
+                    <div className={questionInput}>Symptom input eingeben?</div>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
                 </div>
                 {this.props.ids.map(id => <MessageContainer key={id} id={id}/>)}
