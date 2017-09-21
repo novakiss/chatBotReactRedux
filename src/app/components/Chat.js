@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from'react-dom';
 import withStyle  from 'react-jss';
 import PropTypes from 'prop-types';
 import MessageContainer from '../containers/MessageContainer';
-import bot from '../images/bot.png'
+import bot from '../images/bot.png';
+
 const style = {
     questionInput: {
         boxSizing: 'border-box',
@@ -31,25 +33,27 @@ const style = {
         overflow: 'auto',
     },
     test: {
-        display:'flex',
-        alignItems:'flex-end',
+        display: 'flex',
+        alignItems: 'flex-end',
         webkitBoxPack: 'end',
-        justifyContent:'flex-end'
+        justifyContent: 'flex-end'
     }
 };
 
 class Chat extends React.Component {
-    /*
+
     scrollDiv;
 
+    //Auto Scroll To Bottom
     componentDidUpdate(prevProps) {
-        // ...
-        this.scrollDiv.scrollIntoView();
+        const node = ReactDOM.findDOMNode(this.scrollDiv);
+        if(node) {
+            node.scrollIntoView();
+        }
     }
-     ref={ele => this.scrollDiv = ele}
-    */
+
     render() {
-        const {message, questionInput,test} = this.props.classes;
+        const {message, questionInput, test} = this.props.classes;
 
         return (
             <div className={message} >
@@ -57,7 +61,7 @@ class Chat extends React.Component {
                     <div className={questionInput}>Symptom Input eingeben?</div>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
                 </div>
-                {this.props.ids.map(id => <MessageContainer key={id} id={id}/>)}
+                {this.props.ids.map(id => <MessageContainer key={id} id={id} ref={ele => this.scrollDiv = ele}/>)}
             </div>)
     }
 }
