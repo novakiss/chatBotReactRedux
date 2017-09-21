@@ -55,16 +55,19 @@ export class MessageInput extends React.Component {
 
         this.props.changeStep(this.props.currentStep);
 
-        this.props.sendToServer(this.state.message, this.props.questionId, this.props.score, this.props.userId, this.props.count);
+        this.props.sendToServer(this.state.message, this.props.questionId, this.props.score, this.props.userId, this.props.count, this.props.questionType, this.props.question);
         this.setState({message: ''});
     };
 
     render() {
-        const {input, button,form} = this.props.classes;
+        const {input, button, form} = this.props.classes;
         return <div className={form}>
             <form>
-                <input className={input} onChange={this.handleChange} value={this.state.message} placeholder="Type your answer here..."/>
-                <button className={button} onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>Senden</button>
+                <input className={input} onChange={this.handleChange} value={this.state.message}
+                       placeholder="Type your answer here..."/>
+                <button className={button} onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>
+                    Senden
+                </button>
             </form>
         </div>
     }

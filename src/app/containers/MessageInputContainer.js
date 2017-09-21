@@ -15,7 +15,7 @@ const MessageInputContainer = ({currentStep, getResponseFromServer, message, cha
     if((!response.noQuestion || response.noQuestion ===null)&& currentStep ===ANSWER_STEP){
         return <MessageInput disable={false} sendToServer={getResponseFromServer} changeStep={changeStep}
                              score = {response.score} questionId = {response.questionId} userId = {response.userId}
-                             count ={response.count}
+                             count ={response.count}  questionType = {response.questionType} question = {response.question}
                              sendToMessageContainer={message}/>
 
     }

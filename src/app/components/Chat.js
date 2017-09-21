@@ -36,17 +36,25 @@ const style = {
         webkitBoxPack: 'end',
         justifyContent:'flex-end'
     }
-
 };
 
 class Chat extends React.Component {
+    /*
+    scrollDiv;
+
+    componentDidUpdate(prevProps) {
+        // ...
+        this.scrollDiv.scrollIntoView();
+    }
+     ref={ele => this.scrollDiv = ele}
+    */
     render() {
         const {message, questionInput,test} = this.props.classes;
 
         return (
-            <div className={message}>
+            <div className={message} >
                 <div className={test}>
-                    <div className={questionInput}>Symptom input eingeben?</div>
+                    <div className={questionInput}>Symptom Input eingeben?</div>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
                 </div>
                 {this.props.ids.map(id => <MessageContainer key={id} id={id}/>)}

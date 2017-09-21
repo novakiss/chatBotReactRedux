@@ -15,7 +15,8 @@ export default function message(state = initialState, action) {
                 noQuestion,
                 medicineID,
                 questionId,
-                count
+                count,
+                questionType
             } = action.payload;
             const changeBotEntity = {
                 messageID: botMessageID,
@@ -25,6 +26,7 @@ export default function message(state = initialState, action) {
                 noQuestion: noQuestion,
                 medicine: medicineID,
                 count : count,
+                questionType : questionType,
                 type: 'bot'
             };
             return {

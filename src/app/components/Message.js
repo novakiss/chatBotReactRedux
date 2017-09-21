@@ -61,7 +61,7 @@ const style = {
 
 class Message extends React.Component {
     messageRender = () => {
-        const {text, type, medicine, noQuestion} = this.props;
+        const {text, type, medicine, noQuestion,questionType} = this.props;
         const {user, bot, testBot, testUser} = this.props.classes;
         if (type === 'user') {
             return (<div className={testUser}>
@@ -69,12 +69,23 @@ class Message extends React.Component {
                 <div className={user}>{text}</div>
             </div>);
 
-        } else if (type === 'bot' && !noQuestion) {
+        } else if (type === 'bot' && !noQuestion && questionType === 1) {
             return (<div className={testBot}>
                     <div className={bot}> {text}</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 </div>
-
+            );
+        }else if (type === 'bot' && !noQuestion && questionType === 2) {
+            return (<div className={testBot}>
+                    <div className={bot}> {text}. Sie müssen eine Zahl eingeben.</div>
+                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                </div>
+            );
+        }else if (type === 'bot' && !noQuestion && questionType === 3) {
+            return (<div className={testBot}>
+                    <div className={bot}> {text}. Sie können nur Ja oder Nein antworten.</div>
+                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                </div>
             );
         } else {
             return (<div className={testBot}>
