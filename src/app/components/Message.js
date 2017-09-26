@@ -52,16 +52,52 @@ const style = {
         justifyContent: 'flex-end'
     },
     testUser: {
-        display:'flex',
+        display: 'flex',
         justifyContent: 'flex-start',
-        webkitBoxPack : 'start',
+        webkitBoxPack: 'start',
         alignItems: 'flex-end'
-    }
+    },
+
+
 };
 
 class Message extends React.Component {
+
+    state = {
+        answer: <div>
+            <ul>
+                <li>
+                    <a onClick={()=>this.onClick("Ja")}>
+                        Yes
+                    </a>
+                </li>
+                <li>
+                    <a onClick={()=>this.onClick("Nein")}>
+                        No
+                    </a>
+                </li>
+            </ul>
+        </div>
+    };
+
+    onClick = (input) => {
+        const {getUserMessage,changeStep,getResponse,questionId,score,userId,count,question,questionType} = this.props;
+        const d = new Date();
+        const time = d.toISOString();
+        const mess = {
+            messageUser: input,
+            messageUserTime: time,
+            userMessageID: Date.now()
+        };
+
+        getUserMessage(mess);
+        changeStep();
+        getResponse(input,questionId,score,userId,count,questionType,question);
+    };
+
     messageRender = () => {
-        const {text, type, medics, noQuestion,questionType,questionId} = this.props;
+
+        const {text, type, medics, noQuestion, questionType, questionId} = this.props;
         const {user, bot, testBot, testUser} = this.props.classes;
         if (type === 'user') {
             return (<div className={testUser}>
@@ -75,31 +111,36 @@ class Message extends React.Component {
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 </div>
             );
-        }else if (type === 'bot' && !noQuestion && questionType === 2) {
-            return (<div className={testBot}>
-                    <div className={bot}> {text}. Sie müssen eine Zahl eingeben.</div>
-                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
-                </div>
+        } else if (type === 'bot' && !noQuestion && questionType === 2) {
+            return (
+                    <div className={testBot}>
+                        <div className={bot}> {text}. Sie müssen eine Zahl eingeben.</div>
+                        <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                    </div>
             );
-        }else if (type === 'bot' && !noQuestion && questionType === 3 && questionId !== 13) {
-            return (<div className={testBot}>
+        } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId !== 13) {
+            return (<div>
+                <div className={testBot}>
                     <div className={bot}> {text}. Sie können nur Ja oder Nein antworten.</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 </div>
+                    {this.state.answer}
+                </div>
             );
-        }else if (type === 'bot' && !noQuestion && questionType === 3 && questionId === 13){
+        } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId === 13) {
             return (<div className={testBot}>
                 <div className={bot}> {text}. Sie können nur weiblich oder männlich antworten.</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>);
-        } else if(!medics){
+        } else if (!medics) {
             return (<div className={testBot}>
                 <div className={bot}>Bitte gehen Sie zum Apotheke!!!</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>)
         } else {
             return (<div className={testBot}>
-                <div className={bot}>Keine Frage mehr. Ihre beste Medikament ist {medics[Object.keys(medics)[0]].name}</div>
+                <div className={bot}>Keine Frage mehr. Ihre beste Medikament
+                    ist {medics[Object.keys(medics)[0]].name}</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>);
         }
@@ -110,7 +151,6 @@ class Message extends React.Component {
                 {this.messageRender()}
             </div>
         )
-
     }
 }
 
