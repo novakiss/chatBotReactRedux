@@ -10,13 +10,13 @@ const expectedInitialState = {
 const action = {
     type: BOTMESSAGE,
     payload: {
-        botMessageID : 1000,
-        messageBotTime : 'time Bot send',
-        question : 'Symptom',
-        noQuestion : false,
-        medicineID : [100,5000],
-        questionId : 1,
-        count : 2
+        botMessageID: 1000,
+        messageBotTime: 'time Bot send',
+        question: 'Symptom',
+        noQuestion: false,
+        medics: {name: 'Name Of Medic', id: 123},
+        questionId: 1,
+        count: 2
     }
 };
 
@@ -24,12 +24,14 @@ const expectedState = {
     byID: {
         1000: {
             messageID: 1000,
+            "medics": {
+                name: 'Name Of Medic', id: 123
+            },
             time: 'time Bot send',
             text: 'Symptom',
             questionId: 1,
             noQuestion: false,
-            medicine: [100,5000],
-            count : 2,
+            count: 2,
             type: 'bot'
         },
     },
@@ -61,13 +63,13 @@ const expectedState2 = {
 const action3 = {
     type: BOTMESSAGE,
     payload: {
-        botMessageID : 5,
-        messageBotTime : 'time Bot send',
-        question : 'Alt',
-        noQuestion : false,
-        medicineID : [1342,22342,5000],
-        questionId : 4,
-        count : 2
+        botMessageID: 5,
+        messageBotTime: 'time Bot send',
+        question: 'Alt',
+        noQuestion: false,
+        medics: [1342, 22342, 5000],
+        questionId: 4,
+        count: 2
     }
 };
 
@@ -85,8 +87,8 @@ const expectedState3 = {
             text: 'Alt',
             questionId: 4,
             noQuestion: false,
-            medicine: [1342,22342,5000],
-            count : 2,
+            medics: [1342, 22342, 5000],
+            count: 2,
             type: 'bot'
         },
     },

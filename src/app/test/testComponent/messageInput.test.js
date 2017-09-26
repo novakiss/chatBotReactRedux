@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow,mount} from 'enzyme';
+import {shallow} from 'enzyme';
 
 import {MessageInput} from '../../components/MessageInput';
 
@@ -15,10 +15,10 @@ describe('test MessageInput', () => {
         sendToMessageContainer = jest.fn();
         changeStep = jest.fn();
         sentToServer = jest.fn();
-        wrapper = shallow(<MessageInput disable={true} sendToMessageContainer={sendToMessageContainer} changeStep={changeStep} sendToServer={sentToServer}/> );
+        wrapper = shallow(<MessageInput classes={{}} disable={true} sendToMessageContainer={sendToMessageContainer} changeStep={changeStep} sendToServer={sentToServer}/> );
     });
 
-    //const wrapper = shallow(<MessageInput disable={false}/>);//.first().shallow();
+    //const wrapper = shallow(<MessageInput disable={false}/>).first().shallow();
     it('test div', () => {
         expect(wrapper.find('div').length).toBe(1);
     });
