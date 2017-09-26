@@ -33,7 +33,7 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
     dispatch(start());
     return axios.post('http://apoly.localhost/API/chatbot/post', answer)
         .then((response) => {
-                console.log(response);
+                //console.log(response);
                 return (response.data.data)
             }
         )

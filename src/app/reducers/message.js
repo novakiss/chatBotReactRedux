@@ -13,7 +13,7 @@ export default function message(state = initialState, action) {
                 messageBotTime,
                 question,
                 noQuestion,
-                medicineID,
+                medics,
                 questionId,
                 count,
                 questionType
@@ -24,7 +24,7 @@ export default function message(state = initialState, action) {
                 text: question,
                 questionId: questionId,
                 noQuestion: noQuestion,
-                medicine: medicineID,
+                medics: medics,
                 count : count,
                 questionType : questionType,
                 type: 'bot'
