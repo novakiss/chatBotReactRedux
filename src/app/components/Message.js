@@ -99,7 +99,7 @@ class Message extends React.Component {
             </div>)
         } else {
             return (<div className={testBot}>
-                <div className={bot}>Keine Frage mehr. Ihre beste Medikament ist {medics[Object.keys(medics)[0]]}</div>
+                <div className={bot}>Keine Frage mehr. Ihre beste Medikament ist {medics[Object.keys(medics)[0]].name}</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>);
         }
