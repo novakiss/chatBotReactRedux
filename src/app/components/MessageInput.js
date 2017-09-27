@@ -76,7 +76,7 @@ export class MessageInput extends React.Component {
 MessageInput.propTypes = {
     sendToMessageContainer: PropTypes.func,
     currentStep: PropTypes.string,
-    senToServer: PropTypes.func,
+    sendToServer: PropTypes.func,
     changeStep: PropTypes.func,
     disable: PropTypes.bool.isRequired
 };
