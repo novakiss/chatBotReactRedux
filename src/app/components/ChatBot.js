@@ -2,18 +2,31 @@ import React from 'react';
 import withStyle from 'react-jss';
 import MessageInputContainer from '../containers/MessageInputContainer';
 import ChatContainer from '../containers/ChatContainer';
-
+import MedicsContainer from '../containers/MedicsContainer';
 const style = {
-    head: {
+    chatBot: {
+        width: '75%',
+        margin: '0 auto',
+    },
+
+    headChat: {
         background: '#6e48aa',
         height: '56px',
         color: '#ffffff',
-        fontSize :'xx-large'
+        fontSize: 'xx-large'
     },
-    chatBot:{
+
+    headMedics: {
+        background: '#6e48aa',
+        height: '56px',
+        color: '#ffffff',
+        fontSize: 'x-large'
+    },
+
+    chat: {
+        float: 'left',
         textAlign: 'center',
-        maxWidth: '400px',
-        margin: '0 auto',
+        width: '55%',
         display: 'block',
         background: '#f5f8fb',
         borderRadius: '10px',
@@ -22,7 +35,25 @@ const style = {
         overflow: 'hidden',
         position: 'relative',
         zIndex: '999',
-        transform :'scale(1)',
+        transform: 'scale(1)',
+        transition: 'transform .3s ease',
+        fontSize: 'x-large',
+        marginTop: '30px'
+    },
+
+    medics: {
+        float: 'right',
+        textAlign: 'center',
+        width: '40%',
+        display: 'block',
+        background: '#f5f8fb',
+        borderRadius: '10px',
+        boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.15)',
+        fontFamily: 'monospace',
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: '999',
+        transform: 'scale(1)',
         transition: 'transform .3s ease',
         fontSize: 'x-large',
         marginTop: '30px'
@@ -31,15 +62,19 @@ const style = {
 
 class ChatBot extends React.Component {
     render() {
-        const {chatBot,head} = this.props.classes;
-        return (
-            <div className={chatBot}>
-                <div className={head}>Chatbot Projekt</div>
-                <ChatContainer/>
-                <MessageInputContainer/>
+        const {chatBot, chat, headChat, headMedics, medics} = this.props.classes;
+        return (<div className={chatBot}>
+                <div className={chat}>
+                    <div className={headChat}>Chatbot Projekt</div>
+                    <ChatContainer/>
+                    <MessageInputContainer/>
+                </div>
+                <div className={medics}>
+                    <div className={headMedics}>5 besten Medikamente</div>
+                    <MedicsContainer/>
+                </div>
             </div>
         );
-
     }
 }
 

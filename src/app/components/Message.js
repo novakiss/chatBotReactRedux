@@ -125,7 +125,7 @@ class Message extends React.Component {
         } else if (type === 'bot' && !noQuestion && questionType === 2) {
             return (
                 <div className={testBot}>
-                    <div className={bot}> {text}. Sie müssen eine Zahl eingeben.</div>
+                    <div className={bot}> {text}. Geben Sie bitte eine Zahl.</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 </div>
             );
@@ -141,12 +141,12 @@ class Message extends React.Component {
                             <ul className={this.props.classes.ul}>
                                 <li className={this.props.classes.li}>
                                     <a className={this.props.classes.a} onClick={() => this.onClick("Ja")}>
-                                        Yes
+                                        Ja
                                     </a>
                                 </li>
                                 <li className={this.props.classes.li}>
                                     <a className={this.props.classes.a} onClick={() => this.onClick("Nein")}>
-                                        No
+                                        Nein
                                     </a>
                                 </li>
                             </ul>
@@ -184,7 +184,7 @@ class Message extends React.Component {
             </div>)
         } else {
             return (<div className={testBot}>
-                <div className={bot}>Keine Frage mehr. Ihre beste Medikament
+                <div className={bot}>Keine Frage mehr. Ihr beste Medikament
                     ist {medics[Object.keys(medics)[0]].name}</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>);

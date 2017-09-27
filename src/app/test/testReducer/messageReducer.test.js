@@ -13,10 +13,6 @@ const action = {
         botMessageID: 1000,
         messageBotTime: 'time Bot send',
         question: 'Symptom',
-        noQuestion: false,
-        medics: {name: 'Name Of Medic', id: 123},
-        questionId: 1,
-        count: 2
     }
 };
 
@@ -24,14 +20,8 @@ const expectedState = {
     byID: {
         1000: {
             messageID: 1000,
-            "medics": {
-                name: 'Name Of Medic', id: 123
-            },
             time: 'time Bot send',
             text: 'Symptom',
-            questionId: 1,
-            noQuestion: false,
-            count: 2,
             type: 'bot'
         },
     },
@@ -66,10 +56,6 @@ const action3 = {
         botMessageID: 5,
         messageBotTime: 'time Bot send',
         question: 'Alt',
-        noQuestion: false,
-        medics: [1342, 22342, 5000],
-        questionId: 4,
-        count: 2
     }
 };
 
@@ -85,10 +71,6 @@ const expectedState3 = {
             messageID: 5,
             time: 'time Bot send',
             text: 'Alt',
-            questionId: 4,
-            noQuestion: false,
-            medics: [1342, 22342, 5000],
-            count: 2,
             type: 'bot'
         },
     },

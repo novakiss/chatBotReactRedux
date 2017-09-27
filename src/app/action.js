@@ -38,9 +38,9 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
             }
         )
         .then((response) => {
-            //console.log(response);
-            dispatch(getBotMessage(response));
+            console.log(response);
             dispatch(success(response));
+            dispatch(getBotMessage(response));
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep())
         }).catch(e => {

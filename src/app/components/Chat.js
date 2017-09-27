@@ -13,10 +13,8 @@ const style = {
         maxWidth: '80%',
         position: 'relative',
         clear: 'both',
-
         background: '#95c2fd',
         filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
-
         border: 'solid 1px rgba(0,0,0,0.5)',
         borderRadius: '20px',
         boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
@@ -32,7 +30,7 @@ const style = {
         margin: '0 auto',
         overflow: 'auto',
     },
-    test: {
+    chat: {
         display: 'flex',
         alignItems: 'flex-end',
         webkitBoxPack: 'end',
@@ -45,19 +43,19 @@ class Chat extends React.Component {
     scrollDiv;
 
     //Auto Scroll To Bottom
-    componentDidUpdate(prevProps) {
+    componentDidUpdate() {
         const node = ReactDOM.findDOMNode(this.scrollDiv);
-        if(node) {
+        if (node) {
             node.scrollIntoView();
         }
     }
 
     render() {
-        const {message, questionInput, test} = this.props.classes;
+        const {message, questionInput, chat} = this.props.classes;
 
         return (
-            <div className={message} >
-                <div className={test}>
+            <div className={message}>
+                <div className={chat}>
                     <div className={questionInput}>Symptom Input eingeben?</div>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
                 </div>

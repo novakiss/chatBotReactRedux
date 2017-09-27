@@ -12,21 +12,11 @@ export default function message(state = initialState, action) {
                 botMessageID,
                 messageBotTime,
                 question,
-                noQuestion,
-                medics,
-                questionId,
-                count,
-                questionType
             } = action.payload;
             const changeBotEntity = {
                 messageID: botMessageID,
                 time: messageBotTime,
                 text: question,
-                questionId: questionId,
-                noQuestion: noQuestion,
-                medics: medics,
-                count : count,
-                questionType : questionType,
                 type: 'bot'
             };
             return {
