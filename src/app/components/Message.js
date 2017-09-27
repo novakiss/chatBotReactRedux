@@ -58,30 +58,41 @@ const style = {
         alignItems: 'flex-end'
     },
 
+    a: {
+        background: '#6E48AA',
+        borderRadius: '22px',
+        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15)',
+        color: '#fff',
+        display: 'inline-block',
+        fontSize: '14px',
+        padding: '12px',
+        '&:hover': {
+            opacity: '.7'
+        }
+    },
+
+    li: {
+        webkitAnimation: 'Lmuha .3s ease forwards',
+        animation: 'Lmuha .3s ease forwards',
+        cursor: 'pointer',
+        display: 'inline-block',
+        margin: '2px'
+    },
+
+    ul: {
+        margin: '2px 0 12px 0',
+        padding: '0 6px'
+    }
 
 };
 
 class Message extends React.Component {
-
     state = {
-        answer: <div>
-            <ul>
-                <li>
-                    <a onClick={()=>this.onClick("Ja")}>
-                        Yes
-                    </a>
-                </li>
-                <li>
-                    <a onClick={()=>this.onClick("Nein")}>
-                        No
-                    </a>
-                </li>
-            </ul>
-        </div>
+        answered: false,
     };
 
     onClick = (input) => {
-        const {getUserMessage,changeStep,getResponse,questionId,score,userId,count,question,questionType} = this.props;
+        const {getUserMessage, changeStep, getResponse, questionId, score, userId, count, question, questionType} = this.props;
         const d = new Date();
         const time = d.toISOString();
         const mess = {
@@ -89,16 +100,16 @@ class Message extends React.Component {
             messageUserTime: time,
             userMessageID: Date.now()
         };
-
         getUserMessage(mess);
         changeStep();
-        getResponse(input,questionId,score,userId,count,questionType,question);
+        getResponse(input, questionId, score, userId, count, questionType, question);
+        this.setState({ answered: true });
     };
 
-    messageRender = () => {
-
+    render() {
         const {text, type, medics, noQuestion, questionType, questionId} = this.props;
         const {user, bot, testBot, testUser} = this.props.classes;
+
         if (type === 'user') {
             return (<div className={testUser}>
                 <img src={userImg} alt="avatar" width='56px' height='56px'/>
@@ -113,26 +124,60 @@ class Message extends React.Component {
             );
         } else if (type === 'bot' && !noQuestion && questionType === 2) {
             return (
-                    <div className={testBot}>
-                        <div className={bot}> {text}. Sie müssen eine Zahl eingeben.</div>
-                        <img src={botImg} alt="avatar" width='56px' height='56px'/>
-                    </div>
+                <div className={testBot}>
+                    <div className={bot}> {text}. Sie müssen eine Zahl eingeben.</div>
+                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId !== 13) {
             return (<div>
-                <div className={testBot}>
-                    <div className={bot}> {text}. Sie können nur Ja oder Nein antworten.</div>
-                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
-                </div>
-                    {this.state.answer}
+                    <div className={testBot}>
+                        <div className={bot}> {text}. Wählen Sie eine Auswahl!</div>
+                        <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                    </div>
+
+                    {!this.state.answered ? (
+                        <div>
+                            <ul className={this.props.classes.ul}>
+                                <li className={this.props.classes.li}>
+                                    <a className={this.props.classes.a} onClick={() => this.onClick("Ja")}>
+                                        Yes
+                                    </a>
+                                </li>
+                                <li className={this.props.classes.li}>
+                                    <a className={this.props.classes.a} onClick={() => this.onClick("Nein")}>
+                                        No
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    ): null}
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId === 13) {
-            return (<div className={testBot}>
-                <div className={bot}> {text}. Sie können nur weiblich oder männlich antworten.</div>
-                <img src={botImg} alt="avatar" width='56px' height='56px'/>
+            return (<div>
+                <div className={testBot}>
+                    <div className={bot}> {text}. Wählen Sie eine Auswahl!</div>
+                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                </div>
+                {!this.state.answered ? (
+                    <div>
+                        <ul className={this.props.classes.ul}>
+                            <li className={this.props.classes.li}>
+                                <a className={this.props.classes.a} onClick={() => this.onClick("Männlich")}>
+                                    Männlich
+                                </a>
+                            </li>
+                            <li className={this.props.classes.li}>
+                                <a className={this.props.classes.a} onClick={() => this.onClick("Weiblich")}>
+                                    Weiblich
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                ): null}
             </div>);
-        } else if (!medics) {
+        } else if (!medics && noQuestion) {
             return (<div className={testBot}>
                 <div className={bot}>Bitte gehen Sie zum Apotheke!!!</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
@@ -144,13 +189,6 @@ class Message extends React.Component {
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>);
         }
-    };
-
-    render() {
-        return (<div>
-                {this.messageRender()}
-            </div>
-        )
     }
 }
 
