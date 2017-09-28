@@ -5,9 +5,9 @@ import {
     START,
     SUCCESS,
     ERROR,
-    BOTMESSAGE,
-    NEWMESSAGE,
-    USERMESSAGE
+    BOT_MESSAGE,
+    NEW_MESSAGE,
+    USER_MESSAGE
 } from './constants';
 
 import axios from 'axios';
@@ -16,7 +16,7 @@ export const changeStepToQuestionStep = () => (dispatch) => dispatch(changeStep(
 
 export const getUserMessage = (mess) => (dispatch) =>
     (dispatch({
-        type: USERMESSAGE,
+        type: USER_MESSAGE,
         payload: mess
     }));
 
@@ -38,7 +38,7 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
             }
         )
         .then((response) => {
-            console.log(response);
+            //console.log(response);
             dispatch(success(response));
             dispatch(getBotMessage(response));
             dispatch(newMessage());
@@ -72,12 +72,12 @@ const success = (res) => ({type: SUCCESS, payload: res});
 const error = () => ({type: ERROR});
 
 const getBotMessage = (response) => ({
-    type: BOTMESSAGE,
+    type: BOT_MESSAGE,
     payload: response
 });
 
 
 const newMessage = () => ({
-    type: NEWMESSAGE
+    type: NEW_MESSAGE
 });
 

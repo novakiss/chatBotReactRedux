@@ -1,4 +1,4 @@
-import {BOTMESSAGE, USERMESSAGE} from '../constants';
+import {BOT_MESSAGE, USER_MESSAGE} from '../constants';
 
 const initialState = {
     byID: {},
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function message(state = initialState, action) {
     switch (action.type) {
-        case BOTMESSAGE:
+        case BOT_MESSAGE:
             const {
                 botMessageID,
                 messageBotTime,
@@ -24,7 +24,7 @@ export default function message(state = initialState, action) {
                 byID: {...state.byID, [botMessageID]: changeBotEntity},
                 chatIDs: [...state.chatIDs, ...[botMessageID]]
             };
-        case USERMESSAGE:
+        case USER_MESSAGE:
             const {
                 userMessageID,
                 messageUserTime,

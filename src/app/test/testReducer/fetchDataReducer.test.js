@@ -1,6 +1,6 @@
 import fetchData from '../../reducers/fetchData';
 
-import {START, SUCCESS, ERROR, NEWMESSAGE} from '../../constants';
+import {START, SUCCESS, ERROR, NEW_MESSAGE} from '../../constants';
 
 const expectedInitialState = {
     success: false,
@@ -54,7 +54,7 @@ const testState = {
     }
 };
 const actionNewMessage = {
-    type: NEWMESSAGE,
+    type: NEW_MESSAGE,
 };
 
 const expectedStateIfNewMessage = {

@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import nock from 'nock';
 
 
-import {ANSWER_STEP, START, SUCCESS, BOTMESSAGE, NEWMESSAGE, CHANGE_STEP} from '../../constants';
+import {ANSWER_STEP, START, SUCCESS, BOT_MESSAGE, NEW_MESSAGE, CHANGE_STEP} from '../../constants';
 import {getResponseFromServer, postRequestAllgemein} from '../../action';
 
 const middleware = [thunk];
@@ -14,8 +14,8 @@ const store = mockStore();
 const expectedSuccessAction = [
     {payload: true, type: START},
     {type: SUCCESS},
-    {type: BOTMESSAGE},
-    {type: NEWMESSAGE},
+    {type: BOT_MESSAGE},
+    {type: NEW_MESSAGE},
     {
         payload: ANSWER_STEP,
         type: CHANGE_STEP

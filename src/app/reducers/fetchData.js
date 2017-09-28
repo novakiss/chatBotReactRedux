@@ -1,4 +1,4 @@
-import {START, SUCCESS, ERROR, NEWMESSAGE} from '../constants';
+import {START, SUCCESS, ERROR, NEW_MESSAGE} from '../constants';
 
 const initialState = {
     success: false,
@@ -15,7 +15,7 @@ export default function step(state = initialState, action) {
             return {...state, error: true};
         case START:
             return {...state, loading: false};
-        case NEWMESSAGE:
+        case NEW_MESSAGE:
             return {...state, success: false, error: false, loading: false};
         default:
             return state;

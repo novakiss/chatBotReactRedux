@@ -1,4 +1,4 @@
-import {USERMESSAGE} from '../../constants';
+import {USER_MESSAGE} from '../../constants';
 
 import {getUserMessage} from '../../action';
 
@@ -14,7 +14,7 @@ const store = mockStore();
 const message = 'Message of User';
 
 const expectedGetUserMessage = [{
-    type: USERMESSAGE,
+    type: USER_MESSAGE,
     payload: 'Message of User'
 }];
 

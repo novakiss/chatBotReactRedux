@@ -1,6 +1,6 @@
 import message from '../../reducers/message';
 
-import {BOTMESSAGE, USERMESSAGE} from '../../constants';
+import {BOT_MESSAGE, USER_MESSAGE} from '../../constants';
 
 const expectedInitialState = {
     byID: {},
@@ -8,7 +8,7 @@ const expectedInitialState = {
 };
 
 const action = {
-    type: BOTMESSAGE,
+    type: BOT_MESSAGE,
     payload: {
         botMessageID: 1000,
         messageBotTime: 'time Bot send',
@@ -30,7 +30,7 @@ const expectedState = {
 
 
 const action2 = {
-    type: USERMESSAGE,
+    type: USER_MESSAGE,
     payload: {
         userMessageID: 3,
         messageUserTime: '',
@@ -51,7 +51,7 @@ const expectedState2 = {
 };
 
 const action3 = {
-    type: BOTMESSAGE,
+    type: BOT_MESSAGE,
     payload: {
         botMessageID: 5,
         messageBotTime: 'time Bot send',
