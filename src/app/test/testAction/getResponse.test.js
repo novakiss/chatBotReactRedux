@@ -13,11 +13,8 @@ const mockStore = configureMockStore(middleware);
 const store = mockStore();
 const expectedSuccessAction = [
     {payload: true, type: START},
-    {
-        payload: undefined,
-        type: BOTMESSAGE
-    },
-    {payload: undefined, type: SUCCESS},
+    {type: SUCCESS},
+    {type: BOTMESSAGE},
     {type: NEWMESSAGE},
     {
         payload: ANSWER_STEP,

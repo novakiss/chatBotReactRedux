@@ -14,7 +14,7 @@ describe('step reducer', () => {
         );
     });
     it('test action type', () => {
-        expect(step(undefined,action)).toEqual(
+        expect(step(undefined, action)).toEqual(
             {
                 currentStep: QUESTION_STEP
             }

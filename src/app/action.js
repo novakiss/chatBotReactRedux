@@ -20,15 +20,15 @@ export const getUserMessage = (mess) => (dispatch) =>
         payload: mess
     }));
 
-export const getResponseFromServer = (data, questionId = 1, score = null, userId = null, count = 0,questionType = null ,question = null) => (dispatch) => {
+export const getResponseFromServer = (data, questionId = 1, score = null, userId = null, count = 0, questionType = null, question = null) => (dispatch) => {
     const answer = {
         answer: data,
         questionId: questionId,
         score: score,
         userId: userId,
         count: count,
-        questionType : questionType,
-        question : question
+        questionType: questionType,
+        question: question
     };
     dispatch(start());
     return axios.post('http://apoly.localhost/API/chatbot/post', answer)

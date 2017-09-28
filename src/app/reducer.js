@@ -5,8 +5,7 @@ import message from './reducers/message'
 import fetchData from './reducers/fetchData';
 
 
-
-const state =combineReducers({
+const state = combineReducers({
     step, message, fetchData
 });
 

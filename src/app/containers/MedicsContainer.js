@@ -4,7 +4,7 @@ import {fetchDataSelector} from '../selectors';
 
 import Medics from '../components/Medics';
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
     const {medics} = fetchDataSelector(state).response;
     return {medics}
 };

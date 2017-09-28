@@ -14,13 +14,13 @@ class Medics extends React.Component {
         const {medic} = this.props.classes;
 
         return (<div className={medic}>
-            {medics? (<ul>{medics.map(medic =>(<li type="1" key = {medic.id}>{medic.name}</li>))}</ul>): null}
+            {medics ? (<ul>{medics.map(medic => (<li type="1" key={medic.id}>{medic.name}</li>))}</ul>) : null}
         </div>)
     };
 }
 
 Medics.Prototype = {
-  medics: PropTypes.array
+    medics: PropTypes.array
 };
 
 export default withStyle(style)(Medics);

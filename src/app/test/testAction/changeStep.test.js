@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureMockStore  from 'redux-mock-store';
 
-import { QUESTION_STEP, CHANGE_STEP} from '../../constants';
+import {QUESTION_STEP, CHANGE_STEP} from '../../constants';
 
 import {changeStepToQuestionStep} from '../../action';
 

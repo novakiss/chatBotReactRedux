@@ -103,7 +103,7 @@ class Message extends React.Component {
         getUserMessage(mess);
         changeStep();
         getResponse(input, questionId, score, userId, count, questionType, question);
-        this.setState({ answered: true });
+        this.setState({answered: true});
     };
 
     render() {
@@ -151,7 +151,7 @@ class Message extends React.Component {
                                 </li>
                             </ul>
                         </div>
-                    ): null}
+                    ) : null}
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId === 13) {
@@ -175,7 +175,7 @@ class Message extends React.Component {
                             </li>
                         </ul>
                     </div>
-                ): null}
+                ) : null}
             </div>);
         } else if (!medics && noQuestion) {
             return (<div className={testBot}>

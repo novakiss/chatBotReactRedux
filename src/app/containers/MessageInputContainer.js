@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {stepSelector,fetchDataSelector} from '../selectors';
+import {stepSelector, fetchDataSelector} from '../selectors';
 import {ANSWER_STEP} from '../constants';
 import MessageInput from '../components/MessageInput';
 
@@ -11,18 +11,18 @@ import {
     getResponseFromServer as getResponseFromServerAction
 } from '../action';
 
-const MessageInputContainer = ({currentStep, getResponseFromServer, message, changeStep,response}) => {
-    if((!response.noQuestion || response.noQuestion ===null)&& currentStep ===ANSWER_STEP ){
-        if(response.questionType === 3){
+const MessageInputContainer = ({currentStep, getResponseFromServer, message, changeStep, response}) => {
+    if ((!response.noQuestion || response.noQuestion === null) && currentStep === ANSWER_STEP) {
+        if (response.questionType === 3) {
             return <MessageInput disable={true}/>
         }
         return <MessageInput disable={false} sendToServer={getResponseFromServer} changeStep={changeStep}
-                             score = {response.score} questionId = {response.questionId} userId = {response.userId}
-                             count ={response.count}  questionType = {response.questionType} question = {response.question}
+                             score={response.score} questionId={response.questionId} userId={response.userId}
+                             count={response.count} questionType={response.questionType} question={response.question}
                              sendToMessageContainer={message}/>
 
     }
-    return <MessageInput disable={true} />
+    return <MessageInput disable={true}/>
 };
 
 const mapStateToProps = (state) => {

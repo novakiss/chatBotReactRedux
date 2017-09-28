@@ -4,7 +4,6 @@ import {shallow} from 'enzyme';
 import {MessageInput} from '../../components/MessageInput';
 
 
-
 describe('test MessageInput', () => {
     let sendToMessageContainer;
     let changeStep;
@@ -15,7 +14,8 @@ describe('test MessageInput', () => {
         sendToMessageContainer = jest.fn();
         changeStep = jest.fn();
         sentToServer = jest.fn();
-        wrapper = shallow(<MessageInput classes={{}} disable={true} sendToMessageContainer={sendToMessageContainer} changeStep={changeStep} sendToServer={sentToServer}/> );
+        wrapper = shallow(<MessageInput classes={{}} disable={true} sendToMessageContainer={sendToMessageContainer}
+                                        changeStep={changeStep} sendToServer={sentToServer}/>);
     });
 
     //const wrapper = shallow(<MessageInput disable={false}/>).first().shallow();
@@ -45,7 +45,10 @@ describe('test MessageInput', () => {
         expect(wrapper.state().message).toBe('');
         wrapper.find('input').simulate('change', {target: {value: 'test'}});
         expect(wrapper.state().message).toBe('test');
-        wrapper.find('button').simulate('click',{preventDefault(){}}); //loai bo truong hop preventDefault undefined :https://github.com/airbnb/enzyme/issues/592
+        wrapper.find('button').simulate('click', {
+            preventDefault(){
+            }
+        }); //loai bo truong hop preventDefault undefined :https://github.com/airbnb/enzyme/issues/592
         expect(wrapper.state().message).toBe('');
     });
 });
