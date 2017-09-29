@@ -86,12 +86,13 @@ const style = {
 
 };
 
-class Message extends React.Component {
+export class Message extends React.Component {
     state = {
         answered: false,
     };
 
     onClick = (input) => {
+        this.setState({answered: true});
         const {getUserMessage, changeStep, getResponse, questionId, score, userId, count, question, questionType} = this.props;
         const d = new Date();
         const time = d.toISOString();
@@ -103,7 +104,6 @@ class Message extends React.Component {
         getUserMessage(mess);
         changeStep();
         getResponse(input, questionId, score, userId, count, questionType, question);
-        this.setState({answered: true});
     };
 
     render() {
@@ -118,21 +118,21 @@ class Message extends React.Component {
 
         } else if (type === 'bot' && !noQuestion && questionType === 1) {
             return (<div className={testBot}>
-                    <div className={bot}> {text}</div>
+                    <div className={bot}>{text}</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 2) {
             return (
                 <div className={testBot}>
-                    <div className={bot}> {text}. Geben Sie bitte eine Zahl.</div>
+                    <div className={bot}>{text}. Geben Sie bitte eine Zahl.</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId !== 13) {
             return (<div>
                     <div className={testBot}>
-                        <div className={bot}> {text}. Wählen Sie eine Auswahl!</div>
+                        <div className={bot}>{text}. Wählen Sie eine Auswahl!</div>
                         <img src={botImg} alt="avatar" width='56px' height='56px'/>
                     </div>
 
@@ -140,12 +140,12 @@ class Message extends React.Component {
                         <div>
                             <ul className={this.props.classes.ul}>
                                 <li className={this.props.classes.li}>
-                                    <a className={this.props.classes.a} onClick={() => this.onClick("Ja")}>
+                                    <a id="Yes" className={this.props.classes.a} onClick={() => this.onClick("Ja")}>
                                         Ja
                                     </a>
                                 </li>
                                 <li className={this.props.classes.li}>
-                                    <a className={this.props.classes.a} onClick={() => this.onClick("Nein")}>
+                                    <a id="No" className={this.props.classes.a} onClick={() => this.onClick("Nein")}>
                                         Nein
                                     </a>
                                 </li>
@@ -164,12 +164,12 @@ class Message extends React.Component {
                     <div>
                         <ul className={this.props.classes.ul}>
                             <li className={this.props.classes.li}>
-                                <a className={this.props.classes.a} onClick={() => this.onClick("Männlich")}>
+                                <a id="men" className={this.props.classes.a} onClick={() => this.onClick("Männlich")}>
                                     Männlich
                                 </a>
                             </li>
                             <li className={this.props.classes.li}>
-                                <a className={this.props.classes.a} onClick={() => this.onClick("Weiblich")}>
+                                <a id="women" className={this.props.classes.a} onClick={() => this.onClick("Weiblich")}>
                                     Weiblich
                                 </a>
                             </li>

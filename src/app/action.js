@@ -45,7 +45,7 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
             dispatch(changeStepToAnswerStep())
         }).catch(e => {
             console.log(e);
-            dispatch(error(e));
+            dispatch(error());
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep());
         })

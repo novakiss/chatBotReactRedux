@@ -38,7 +38,7 @@ const style = {
     }
 };
 
-class Chat extends React.Component {
+export class Chat extends React.Component {
 
     scrollDiv;
 
@@ -64,7 +64,7 @@ class Chat extends React.Component {
     }
 }
 
-Chat.PropTypes = {
+Chat.propTypes = {
     ids: PropTypes.array.isRequired,
 };
 export default withStyle(style)(Chat);

@@ -8,7 +8,7 @@ const style = {
     }
 };
 
-class Medics extends React.Component {
+export class Medics extends React.Component {
     render() {
         const {medics} = this.props;
         const {medic} = this.props.classes;

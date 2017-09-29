@@ -60,7 +60,7 @@ const style = {
     }
 };
 
-class ChatBot extends React.Component {
+export class ChatBot extends React.Component {
     render() {
         const {chatBot, chat, headChat, headMedics, medics} = this.props.classes;
         return (<div className={chatBot}>
