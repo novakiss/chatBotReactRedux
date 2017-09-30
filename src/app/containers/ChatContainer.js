@@ -4,7 +4,7 @@ import {messageSelector} from '../selectors';
 
 import Chat from '../components/Chat';
 
-const ChatContainer = ({chatIDs}) => {
+export const ChatContainer = ({chatIDs}) => {
     return (<div>
         <Chat ids={chatIDs}/>
     </div>)
