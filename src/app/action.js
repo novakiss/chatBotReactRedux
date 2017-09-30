@@ -43,8 +43,8 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
             dispatch(getBotMessage(response));
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep())
-        }).catch(e => {
-            console.log(e);
+        }).catch(() => {
+            //console.log(e);
             dispatch(error());
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep());
