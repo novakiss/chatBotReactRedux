@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import {shallow} from 'enzyme';
 import {createMockStore } from 'redux-test-utils';
 import {shallowWithStore} from 'enzyme-redux';
@@ -25,24 +24,4 @@ describe('test ChatContainer',()=>{
         expect(wrapper.find(Chat).exists()).toBe(true);
         expect(wrapper.find(Chat).props().ids[1]).toBe(3);
     })
-});
-
-describe('dispatch', () => {
-    const ReactComponent = () => (<div>dummy component</div>);
-    it('works', () => {
-        const action = {
-            type: 'type',
-        };
-        const mapDispatchToProps = (dispatch) => ({
-            dispatchProp() {
-                dispatch(action);
-            },
-        });
-        const store = createMockStore();
-
-        const ConnectedComponent = connect(undefined, mapDispatchToProps)(ReactComponent);
-        const component = shallowWithStore(<ConnectedComponent />, store);
-        component.props().dispatchProp();
-        expect(store.isActionDispatched(action)).toBe(true);
-    });
 });

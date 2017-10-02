@@ -11,12 +11,12 @@ import {
     getResponseFromServer as getResponseFromServerAction
 } from '../action';
 
-const MessageInputContainer = ({currentStep, getResponseFromServer, message, changeStep, response}) => {
+export const MessageInputContainer = ({currentStep, getResponse, message, changeStep, response}) => {
     if ((!response.noQuestion || response.noQuestion === null) && currentStep === ANSWER_STEP) {
         if (response.questionType === 3) {
             return <MessageInput disable={true}/>
         }
-        return <MessageInput disable={false} sendToServer={getResponseFromServer} changeStep={changeStep}
+        return <MessageInput disable={false} sendToServer={getResponse} changeStep={changeStep}
                              score={response.score} questionId={response.questionId} userId={response.userId}
                              count={response.count} questionType={response.questionType} question={response.question}
                              sendToMessageContainer={message}/>
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    getResponseFromServer: getResponseFromServerAction,
+    getResponse: getResponseFromServerAction,
     changeStep: changeStepToQuestionStepAction,
     message: getUserMessageAction,
 };
