@@ -43,15 +43,18 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
             dispatch(getBotMessage(response));
             dispatch(newMessage());
             dispatch(changeStepToAnswerStep())
-        }).catch(() => {
-            //console.log(e);
+        }).catch((e) => {
             dispatch(error());
-            dispatch(newMessage());
-            dispatch(changeStepToAnswerStep());
+            dispatch(getBotMessage(test(e.message)));
+            //dispatch(newMessage());
+            //dispatch(changeStepToAnswerStep());
         })
 };
 
-
+const test =(e) =>( {
+    botMessageID : 'ErrorMessage',
+    question : e
+});
 const changeStep = (step) => (dispatch) => {
     dispatch({type: CHANGE_STEP, payload: getNextStep(step)});
 };

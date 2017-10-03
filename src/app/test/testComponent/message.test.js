@@ -156,4 +156,12 @@ describe('test Message Component', () => {
 
         expect(wrapper.text()).toBe('Keine Frage mehr. Ihr beste Medikament ist Best Medic');
     });
+
+    it('Cause Error Network', () => {
+        type= 'bot';
+        text= 'Network error';
+        wrapper = shallow(<Message classes={{}} text={text} type={type}
+                                   error ={true}/>);
+        expect(wrapper.text()).toBe('Fuking Message aus Server: Network error.Checken Sie bitte Ihre Verbindung und laden Sie diese Seite noch einmal neu!!!');
+    });
 });

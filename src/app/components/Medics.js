@@ -4,7 +4,7 @@ import withStyle from 'react-jss';
 
 const style = {
     medic: {
-        height: '510px'
+        height: '525px'
     }
 };
 

@@ -14,7 +14,8 @@ const mapStateToProps = (state, props) => {
     const {currentStep} = stepSelector(state);
     const {text, type} = messageSelector(state).byID[props.id];
     const {score, userId, count, question, medics, questionId, noQuestion, questionType} = fetchDataSelector(state).response;
-    return {currentStep, text, type, medics, noQuestion, questionType, questionId, score, userId, count, question};
+    const {error} = fetchDataSelector(state);
+    return {currentStep, text, type, medics, noQuestion, questionType, questionId, score, userId, count, question,error};
 };
 
 const mapDispatchToProps = {

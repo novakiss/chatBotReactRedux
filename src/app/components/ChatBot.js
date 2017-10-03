@@ -10,14 +10,14 @@ const style = {
     },
 
     headChat: {
-        background: '#6e48aa',
+        background: '#3f51b5',
         height: '56px',
         color: '#ffffff',
         fontSize: 'xx-large'
     },
 
     headMedics: {
-        background: '#6e48aa',
+        background: '#3f51b5',
         height: '56px',
         color: '#ffffff',
         fontSize: 'x-large'
