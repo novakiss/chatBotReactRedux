@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from'react-dom';
-import withStyle  from 'react-jss';
+import ReactDOM from 'react-dom';
+import withStyle from 'react-jss';
 import PropTypes from 'prop-types';
 import MessageContainer from '../containers/MessageContainer';
 import bot from '../images/bot.png';
@@ -8,13 +8,14 @@ import bot from '../images/bot.png';
 const style = {
     questionInput: {
         boxSizing: 'border-box',
-        //float: 'right',
         width: 'auto',
         maxWidth: '80%',
         position: 'relative',
         clear: 'both',
+
         background: '#95c2fd',
         filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
+
         border: 'solid 1px rgba(0,0,0,0.5)',
         borderRadius: '20px',
         boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
@@ -32,9 +33,9 @@ const style = {
     },
     chat: {
         display: 'flex',
-        alignItems: 'flex-end',
-        webkitBoxPack: 'end',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-start',
+        webkitBoxPack: 'start',
+        alignItems: 'flex-end'
     }
 };
 
@@ -56,8 +57,9 @@ export class Chat extends React.Component {
         return (
             <div className={message}>
                 <div className={chat}>
-                    <div className={questionInput}>Symptom Input eingeben?</div>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
+                    <div className={questionInput}>Symptom Input eingeben?</div>
+
                 </div>
                 {this.props.ids.map(id => <MessageContainer key={id} id={id} ref={ele => this.scrollDiv = ele}/>)}
             </div>)

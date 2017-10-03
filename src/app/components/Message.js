@@ -6,7 +6,7 @@ import botImg from '../images/bot.png';
 import userImg from '../images/user.jpg';
 
 const style = {
-    user: {
+    bot: {
         boxSizing: 'border-box',
         width: 'auto',
         maxWidth: '80%',
@@ -25,7 +25,7 @@ const style = {
         textShadow: '0 1px 1px rgba(255,255,255,0.8)',
         wordWrap: 'break-word'
     },
-    bot: {
+    user: {
         boxSizing: 'border-box',
         //float: 'right',
         width: 'auto',
@@ -45,13 +45,13 @@ const style = {
         textShadow: '0 1px 1px rgba(255,255,255,0.8)',
         wordWrap: 'break-word'
     },
-    testBot: {
+    testUser: {
         display: 'flex',
         alignItems: 'flex-end',
         webkitBoxPack: 'end',
         justifyContent: 'flex-end'
     },
-    testUser: {
+    testBot: {
         display: 'flex',
         justifyContent: 'flex-start',
         webkitBoxPack: 'start',
@@ -112,36 +112,37 @@ export class Message extends React.Component {
 
         if (type === 'user') {
             return (<div className={testUser}>
-                <img src={userImg} alt="avatar" width='56px' height='56px'/>
                 <div className={user}>{text}</div>
+                <img src={userImg} alt="avatar" width='56px' height='56px'/>
             </div>);
 
         } else if (type === 'bot' && error) {
             return (<div className={testBot}>
+                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
                     <div className={bot}>Fehler aus Server: {text}.Checken Sie bitte Ihre Verbindung und laden
                         Sie diese Seite noch einmal neu!!!
                     </div>
-                    <img src={botImg} alt="avatar" width='56px' height='56px'/>
+
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 1) {
             return (<div className={testBot}>
-                    <div className={bot}>{text}</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                    <div className={bot}>{text}</div>
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 2) {
             return (
                 <div className={testBot}>
-                    <div className={bot}>{text}. Geben Sie bitte eine Zahl.</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                    <div className={bot}>{text}. Geben Sie bitte eine Zahl.</div>
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId !== 13) {
             return (<div>
                     <div className={testBot}>
-                        <div className={bot}>{text}. Wählen Sie eine Auswahl!</div>
                         <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                        <div className={bot}>{text}. Wählen Sie eine Auswahl!</div>
                     </div>
 
                     {!this.state.answered ? (
@@ -187,14 +188,14 @@ export class Message extends React.Component {
             </div>);
         } else if (!medics && noQuestion) {
             return (<div className={testBot}>
-                <div className={bot}>Bitte gehen Sie zum Apotheke!!!</div>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                <div className={bot}>Bitte gehen Sie zum Apotheke!!!</div>
             </div>)
         } else {
             return (<div className={testBot}>
+                <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 <div className={bot}>Keine Frage mehr. Ihr beste Medikament
                     ist {medics[Object.keys(medics)[0]].name}</div>
-                <img src={botImg} alt="avatar" width='56px' height='56px'/>
             </div>);
         }
     }
