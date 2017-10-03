@@ -162,6 +162,6 @@ describe('test Message Component', () => {
         text= 'Network error';
         wrapper = shallow(<Message classes={{}} text={text} type={type}
                                    error ={true}/>);
-        expect(wrapper.text()).toBe('Fuking Message aus Server: Network error.Checken Sie bitte Ihre Verbindung und laden Sie diese Seite noch einmal neu!!!');
+        expect(wrapper.text()).toBe('Fehler aus Server: Network error.Checken Sie bitte Ihre Verbindung und laden Sie diese Seite noch einmal neu!!!');
     });
 });

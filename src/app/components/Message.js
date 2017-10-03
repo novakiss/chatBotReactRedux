@@ -118,7 +118,7 @@ export class Message extends React.Component {
 
         } else if (type === 'bot' && error) {
             return (<div className={testBot}>
-                    <div className={bot}>Fuking Message aus Server: {text}.Checken Sie bitte Ihre Verbindung und laden
+                    <div className={bot}>Fehler aus Server: {text}.Checken Sie bitte Ihre Verbindung und laden
                         Sie diese Seite noch einmal neu!!!
                     </div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
