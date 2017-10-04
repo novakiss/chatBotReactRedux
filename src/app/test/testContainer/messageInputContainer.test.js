@@ -3,7 +3,7 @@ import {createMockStore} from 'redux-test-utils';
 import {shallowWithStore} from 'enzyme-redux';
 import {shallow} from 'enzyme';
 
-import {ANSWER_STEP} from '../../constants';
+import {ANSWER_STEP,USER_MESSAGE,CHANGE_STEP,QUESTION_STEP} from '../../constants';
 import MessageInputConnected, {MessageInputContainer} from '../../containers/MessageInputContainer';
 import MessageInput from '../../components/MessageInput';
 
@@ -71,13 +71,23 @@ const stateMessageInputIfNoQuestionNull = {
         }
     }
 };
+const message = 'test';
 
 describe('test MessageInputContainer', () => {
     it('test Component with QuestionType not 3', () => {
         const state = stateMessageInputForUserWithQuestionTypeNot3.chatBot.state;
         const store = createMockStore(stateMessageInputForUserWithQuestionTypeNot3);
         const component = shallowWithStore(<MessageInputConnected/>, store);
-        component.props();
+        component.props().message(message);
+        component.props().changeStep();
+        expect(store.isActionDispatched({
+            type: USER_MESSAGE,
+            payload: message
+        })).toBe(true);
+        expect(store.isActionDispatched({
+            type: CHANGE_STEP,
+            payload: QUESTION_STEP
+        })).toBe(true);
         const wrapper = shallow(<MessageInputContainer currentStep={state.step.currentStep}
                                                        response={state.fetchData.response}/>);
         expect(wrapper.find(MessageInput).exists()).toBe(true);
@@ -87,7 +97,16 @@ describe('test MessageInputContainer', () => {
         const state = stateMessageInputForUserWithQuestionType3.chatBot.state;
         const store = createMockStore(stateMessageInputForUserWithQuestionType3);
         const component = shallowWithStore(<MessageInputConnected/>, store);
-        component.props();
+        component.props().message(message);
+        component.props().changeStep();
+        expect(store.isActionDispatched({
+            type: USER_MESSAGE,
+            payload: message
+        })).toBe(true);
+        expect(store.isActionDispatched({
+            type: CHANGE_STEP,
+            payload: QUESTION_STEP
+        })).toBe(true);
         const wrapper = shallow(<MessageInputContainer currentStep={state.step.currentStep}
                                                        response={state.fetchData.response}/>);
         expect(wrapper.find(MessageInput).exists()).toBe(true);
@@ -107,7 +126,16 @@ describe('test MessageInputContainer', () => {
         const state = stateMessageInputForUserWithQuestionType3.chatBot.state;
         const store = createMockStore(stateMessageInputForUserWithQuestionType3);
         const component = shallowWithStore(<MessageInputConnected/>, store);
-        component.props();
+        component.props().message(message);
+        component.props().changeStep();
+        expect(store.isActionDispatched({
+            type: USER_MESSAGE,
+            payload: message
+        })).toBe(true);
+        expect(store.isActionDispatched({
+            type: CHANGE_STEP,
+            payload: QUESTION_STEP
+        })).toBe(true);
         const wrapper = shallow(<MessageInputContainer currentStep= 'test'
                                                        response={state.fetchData.response}/>);
         expect(wrapper.find(MessageInput).exists()).toBe(true);
