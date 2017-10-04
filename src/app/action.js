@@ -31,7 +31,7 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
         question: question
     };
     dispatch(start());
-    return axios.post('http://apoly.localhost/API/chatbot/post', answer)
+    return axios.post('http://apoly.localhost/API/chatbot/', answer)
         .then((response) => {
                 return (response.data.data)
             }

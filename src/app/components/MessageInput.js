@@ -60,7 +60,6 @@ export class MessageInput extends React.Component {
     };
 
     render() {
-        console.log(this.state.message==='');
         const {input, button, form} = this.props.classes;
         return <div className={form}>
             <form>
