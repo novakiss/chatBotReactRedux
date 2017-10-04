@@ -12,10 +12,8 @@ const style = {
         maxWidth: '80%',
         position: 'relative',
         clear: 'both',
-
         background: '#95c2fd',
         filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
-
         border: 'solid 1px rgba(0,0,0,0.5)',
         borderRadius: '20px',
         boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
@@ -40,9 +38,7 @@ const style = {
 };
 
 export class Chat extends React.Component {
-
     scrollDiv;
-
     //Auto Scroll To Bottom
     componentDidUpdate() {
         const node = ReactDOM.findDOMNode(this.scrollDiv);
@@ -59,7 +55,6 @@ export class Chat extends React.Component {
                 <div className={chat}>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
                     <div className={questionInput}>Symptom Input eingeben?</div>
-
                 </div>
                 {this.props.ids.map(id => <MessageContainer key={id} id={id} ref={ele => this.scrollDiv = ele}/>)}
             </div>)
@@ -69,4 +64,5 @@ export class Chat extends React.Component {
 Chat.propTypes = {
     ids: PropTypes.array.isRequired,
 };
+
 export default withStyle(style)(Chat);

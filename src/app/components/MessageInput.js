@@ -43,6 +43,7 @@ export class MessageInput extends React.Component {
     };
 
     handleSubmit = (e) => {
+        const {sendToMessageContainer,changeStep,sendToServer,questionId, score, userId, count, questionType, question} = this.props;
         e.preventDefault();
         const d = new Date();
         const time = d.toISOString();
@@ -51,11 +52,9 @@ export class MessageInput extends React.Component {
             messageUserTime: time,
             userMessageID: Date.now()
         };
-        this.props.sendToMessageContainer(newItem);
-
-        this.props.changeStep(this.props.currentStep);
-
-        this.props.sendToServer(this.state.message, this.props.questionId, this.props.score, this.props.userId, this.props.count, this.props.questionType, this.props.question);
+        sendToMessageContainer(newItem);
+        sendToServer(this.state.message, questionId,score,userId,count,questionType,question);
+        changeStep();
         this.setState({message: ''});
     };
 
@@ -65,11 +64,13 @@ export class MessageInput extends React.Component {
             <form>
                 <input className={input} onChange={this.handleChange} value={this.state.message}
                        placeholder="Type your answer here..."/>
-                {this.state.message===''? <button className={button} onClick={this.handleSubmit} type="submit" disabled={true}>
-                    Senden
-                </button>: <button className={button} onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>
-                    Senden
-                </button>}
+                {this.state.message === '' ?
+                    <button className={button} onClick={this.handleSubmit} type="submit" disabled={true}>
+                        Senden
+                    </button> :
+                    <button className={button} onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>
+                        Senden
+                    </button>}
             </form>
         </div>
     }

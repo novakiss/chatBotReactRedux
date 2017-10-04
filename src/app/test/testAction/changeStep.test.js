@@ -10,7 +10,7 @@ const mockStore = configureMockStore(middleware);
 
 const store = mockStore({});
 
-const expectedchangeStepToQuestionStep = [{
+const expectedChangeStepToQuestionStep = [{
     type: CHANGE_STEP,
     payload: QUESTION_STEP
 }];
@@ -18,7 +18,7 @@ const expectedchangeStepToQuestionStep = [{
 describe('test change step', () => {
     it('test change Step', () => {
         store.dispatch(changeStepToQuestionStep());
-        expect(store.getActions()).toEqual(expectedchangeStepToQuestionStep);
+        expect(store.getActions()).toEqual(expectedChangeStepToQuestionStep);
     });
 });
 

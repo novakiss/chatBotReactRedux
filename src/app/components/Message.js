@@ -12,10 +12,8 @@ const style = {
         maxWidth: '80%',
         position: 'relative',
         clear: 'both',
-
         background: '#95c2fd',
         filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
-
         border: 'solid 1px rgba(0,0,0,0.5)',
         borderRadius: '20px',
         boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
@@ -25,17 +23,15 @@ const style = {
         textShadow: '0 1px 1px rgba(255,255,255,0.8)',
         wordWrap: 'break-word'
     },
+
     user: {
         boxSizing: 'border-box',
-        //float: 'right',
         width: 'auto',
         maxWidth: '80%',
         position: 'relative',
         clear: 'both',
-
         background: '#95c2fd',
         filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#95c2fd\', endColorstr=\'#bee2ff\')',
-
         border: 'solid 1px rgba(0,0,0,0.5)',
         borderRadius: '20px',
         boxShadow: ' inset 0 8px 5px rgba(255,255,255,0.65), 0 1px 2px rgba(0,0,0,0.2)',
@@ -45,12 +41,14 @@ const style = {
         textShadow: '0 1px 1px rgba(255,255,255,0.8)',
         wordWrap: 'break-word'
     },
+
     testUser: {
         display: 'flex',
         alignItems: 'flex-end',
         webkitBoxPack: 'end',
         justifyContent: 'flex-end'
     },
+
     testBot: {
         display: 'flex',
         justifyContent: 'flex-start',
@@ -83,7 +81,6 @@ const style = {
         margin: '2px 0 12px 0',
         padding: '0 6px'
     }
-
 };
 
 export class Message extends React.Component {
@@ -122,7 +119,6 @@ export class Message extends React.Component {
                     <div className={bot}>Fehler aus Server: {text}.Checken Sie bitte Ihre Verbindung und laden
                         Sie diese Seite noch einmal neu!!!
                     </div>
-
                 </div>
             );
         } else if (type === 'bot' && !noQuestion && questionType === 1) {
@@ -144,7 +140,6 @@ export class Message extends React.Component {
                         <img src={botImg} alt="avatar" width='56px' height='56px'/>
                         <div className={bot}>{text}. Wählen Sie eine Auswahl!</div>
                     </div>
-
                     {!this.state.answered ? (
                         <div>
                             <ul className={this.props.classes.ul}>

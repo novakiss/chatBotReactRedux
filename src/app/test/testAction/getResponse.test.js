@@ -4,7 +4,7 @@ import nock from 'nock';
 
 
 import {ANSWER_STEP, START, SUCCESS, BOT_MESSAGE, NEW_MESSAGE, CHANGE_STEP, ERROR} from '../../constants';
-import {getResponseFromServer, postRequestAllgemein} from '../../action';
+import {getResponseFromServer} from '../../action';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
@@ -33,7 +33,7 @@ const expectedErrorAction =[
 ];
 
 nock('http://apoly.localhost/API/')
-    .post('/chatbot/post')
+    .post('/chatbot/')
     .reply(200, {body: {info: []}});
 
 describe('async action', () => {
