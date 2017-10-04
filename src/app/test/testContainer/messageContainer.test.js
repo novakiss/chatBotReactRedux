@@ -2,8 +2,8 @@ import React from 'react';
 import {createMockStore} from 'redux-test-utils';
 import {shallowWithStore} from 'enzyme-redux';
 
-
 import MessageContainer from '../../containers/MessageContainer'
+import {USER_MESSAGE} from "../../constants";
 
 const testId = {
   id: 'testId'
@@ -40,9 +40,14 @@ const stateTest = {
 
 describe('test', () => {
     it('test', () => {
+        const mess = 'test';
         const store = createMockStore(stateTest);
         const component = shallowWithStore(<MessageContainer {...testId}/>, store);
-        component.props();
+        component.props().getUserMessage(mess);
+        console.log(store.isActionDispatched({
+            type: USER_MESSAGE,
+            payload: mess
+        }))
     });
 });
 

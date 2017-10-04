@@ -12,13 +12,12 @@ import {
 
 import axios from 'axios';
 
-export const changeStepToQuestionStep = () => (dispatch) => dispatch(changeStep(ANSWER_STEP));
+export const changeStepToQuestionStep = () => changeStep(ANSWER_STEP);
 
-export const getUserMessage = (mess) => (dispatch) =>
-    (dispatch({
-        type: USER_MESSAGE,
-        payload: mess
-    }));
+export const getUserMessage = (mess) => ({
+    type: USER_MESSAGE,
+    payload: mess
+});
 
 export const getResponseFromServer = (data, questionId = 1, score = null, userId = null, count = 0, questionType = null, question = null) => (dispatch) => {
     const answer = {
@@ -32,9 +31,9 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
     };
     dispatch(start());
     return axios.post('http://apoly.localhost/API/chatbot/', answer)
-        .then((response) => {
-                return (response.data.data)
-            }
+        .then((response) =>
+                 (response.data.data)
+
         )
         .then((response) => {
             dispatch(success(response));
@@ -47,13 +46,13 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
         })
 };
 
-const test =(e) =>( {
-    botMessageID : 'ErrorMessage',
-    question : e
+const test = (e) => ({
+    botMessageID: 'ErrorMessage',
+    question: e
 });
-const changeStep = (step) => (dispatch) => {
-    dispatch({type: CHANGE_STEP, payload: getNextStep(step)});
-};
+const changeStep = (step) => (
+    {type: CHANGE_STEP, payload: getNextStep(step)}
+);
 
 const changeStepToAnswerStep = () => changeStep(QUESTION_STEP);
 
