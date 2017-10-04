@@ -60,14 +60,17 @@ export class MessageInput extends React.Component {
     };
 
     render() {
+        console.log(this.state.message==='');
         const {input, button, form} = this.props.classes;
         return <div className={form}>
             <form>
                 <input className={input} onChange={this.handleChange} value={this.state.message}
                        placeholder="Type your answer here..."/>
-                <button className={button} onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>
+                {this.state.message===''? <button className={button} onClick={this.handleSubmit} type="submit" disabled={true}>
                     Senden
-                </button>
+                </button>: <button className={button} onClick={this.handleSubmit} type="submit" disabled={this.props.disable}>
+                    Senden
+                </button>}
             </form>
         </div>
     }
