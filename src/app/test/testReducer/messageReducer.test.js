@@ -13,6 +13,7 @@ const action = {
         botMessageID: 1000,
         messageBotTime: 'time Bot send',
         question: 'Symptom',
+        noQuestion:true,
         questionType : 1
     }
 };
@@ -24,6 +25,7 @@ const expectedState = {
             time: 'time Bot send',
             text: 'Symptom',
             type: 'bot',
+            noQuestion: true,
             questionType: 1
         },
     },
@@ -58,6 +60,7 @@ const action3 = {
         botMessageID: 5,
         messageBotTime: 'time Bot send',
         question: 'Alt',
+        noQuestion: true,
         questionType : 2
     }
 };
@@ -75,6 +78,7 @@ const expectedState3 = {
             time: 'time Bot send',
             text: 'Alt',
             questionType: 2,
+            noQuestion: true,
             type: 'bot'
         },
     },

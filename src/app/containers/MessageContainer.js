@@ -8,8 +8,8 @@ import Message from '../components/Message';
 
 const mapStateToProps = (state, props) => {
     const {currentStep} = stepSelector(state);
-    const {text, type,questionType} = messageSelector(state).byID[props.id];
-    const {score,userId,count,question,noQuestion,medics,questionId} = fetchDataSelector(state).response;
+    const {text, type,noQuestion,questionType} = messageSelector(state).byID[props.id];
+    const {score,userId,count,question,medics,questionId} = fetchDataSelector(state).response;
     const{error} = fetchDataSelector(state);
     return {currentStep, text, type,medics,noQuestion,questionType,questionId,score,userId,count,question,error};
 };
