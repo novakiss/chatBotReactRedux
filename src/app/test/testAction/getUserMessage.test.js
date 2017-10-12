@@ -18,18 +18,9 @@ const expectedGetUserMessage = [{
     payload: 'Message of User'
 }];
 
-const name = 'name';
-
 describe('test getUserMessageAction', () => {
     it('test this Action', () => {
         store.dispatch(getUserMessage(message));
         expect(store.getActions()).toEqual(expectedGetUserMessage);
     });
 });
-
-
-
-
-
-
-

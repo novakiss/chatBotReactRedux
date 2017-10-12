@@ -32,9 +32,7 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
     dispatch(start());
     return axios.post('http://apoly.localhost/API/chatbot/', answer)
         .then((response) =>
-                 (response.data.data)
-
-        )
+                 (response.data.data))
         .then((response) => {
             dispatch(success(response));
             dispatch(getBotMessage(response));
@@ -42,11 +40,11 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
             dispatch(changeStepToAnswerStep())
         }).catch((e) => {
             dispatch(error());
-            dispatch(getBotMessage(test(e.message)));
+            dispatch(getBotMessage(messageError(e.message)));
         })
 };
 
-const test = (e) => ({
+const messageError = (e) => ({
     botMessageID: 'ErrorMessage',
     question: e
 });

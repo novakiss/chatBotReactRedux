@@ -11,4 +11,4 @@ const state = combineReducers({
 
 export default combineReducers({
     state
-})
+});

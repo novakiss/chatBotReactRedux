@@ -161,8 +161,9 @@ export class Message extends React.Component {
         } else if (type === 'bot' && !noQuestion && questionType === 3 && questionId === 13) {
             return (<div>
                 <div className={testBot}>
-                    <div className={bot}> {text}. Wählen Sie eine Auswahl!</div>
                     <img src={botImg} alt="avatar" width='56px' height='56px'/>
+                    <div className={bot}> {text}. Wählen Sie eine Auswahl!</div>
+
                 </div>
                 {!this.state.answered ? (
                     <div>

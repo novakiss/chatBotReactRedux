@@ -2,7 +2,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 
-
 import {ANSWER_STEP, START, SUCCESS, BOT_MESSAGE, NEW_MESSAGE, CHANGE_STEP, ERROR} from '../../constants';
 import {getResponseFromServer} from '../../action';
 
@@ -20,7 +19,7 @@ const expectedSuccessAction = [
         type: CHANGE_STEP
     }];
 
-const expectedErrorAction =[
+const expectedErrorAction = [
     {payload: true, type: START},
     {type: ERROR},
     {
@@ -49,10 +48,3 @@ describe('async action', () => {
         })
     });
 });
-
-
-
-
-
-
-
