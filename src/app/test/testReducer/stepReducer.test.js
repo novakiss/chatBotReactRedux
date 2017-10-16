@@ -5,6 +5,7 @@ const action = {
     type: CHANGE_STEP,
     payload: QUESTION_STEP
 };
+
 describe('step reducer', () => {
     it('das soll "initialState" zurückgeliefert', () => {
         expect(step(undefined, {})).toEqual(

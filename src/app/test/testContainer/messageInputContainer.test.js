@@ -3,10 +3,9 @@ import {createMockStore} from 'redux-test-utils';
 import {shallowWithStore} from 'enzyme-redux';
 import {shallow} from 'enzyme';
 
-import {ANSWER_STEP,USER_MESSAGE,CHANGE_STEP,QUESTION_STEP} from '../../constants';
+import {ANSWER_STEP, USER_MESSAGE, CHANGE_STEP, QUESTION_STEP} from '../../constants';
 import MessageInputConnected, {MessageInputContainer} from '../../containers/MessageInputContainer';
 import MessageInput from '../../components/MessageInput';
-
 
 const stateMessageInputForUserWithQuestionTypeNot3 = {
     chatBot: {
@@ -117,7 +116,7 @@ describe('test MessageInputContainer', () => {
         const store = createMockStore(stateMessageInputIfNoQuestionNull);
         const component = shallowWithStore(<MessageInputConnected/>, store);
         component.props();
-        const wrapper = shallow(<MessageInputContainer currentStep= 'test'
+        const wrapper = shallow(<MessageInputContainer currentStep='test'
                                                        response={state.fetchData.response}/>);
         expect(wrapper.find(MessageInput).exists()).toBe(true);
         expect(wrapper.find(MessageInput).props().disable).toBe(true);
@@ -136,7 +135,7 @@ describe('test MessageInputContainer', () => {
             type: CHANGE_STEP,
             payload: QUESTION_STEP
         })).toBe(true);
-        const wrapper = shallow(<MessageInputContainer currentStep= 'test'
+        const wrapper = shallow(<MessageInputContainer currentStep='test'
                                                        response={state.fetchData.response}/>);
         expect(wrapper.find(MessageInput).exists()).toBe(true);
         expect(wrapper.find(MessageInput).props().disable).toBe(true);

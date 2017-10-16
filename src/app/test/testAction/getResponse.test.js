@@ -40,7 +40,7 @@ describe('async action', () => {
         nock.cleanAll();
     });
 
-    it('fetching todos has been done', () => {
+    it('fetching getResponse has been done', () => {
         return store.dispatch(getResponseFromServer('data')).then(() => {
             expect(store.getActions()).toEqual(expectedSuccessAction);
         }).catch(() => {

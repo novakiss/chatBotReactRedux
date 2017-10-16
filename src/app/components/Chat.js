@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import withStyle from 'react-jss';
 import PropTypes from 'prop-types';
+
 import MessageContainer from '../containers/MessageContainer';
 import bot from '../images/bot.png';
 

@@ -7,7 +7,7 @@ const initialState = {
 
 export default function message(state = initialState, action) {
     switch (action.type) {
-        case BOT_MESSAGE:
+        case BOT_MESSAGE:  //for get Message of Bot
             const {
                 botMessageID,
                 messageBotTime,
@@ -28,13 +28,17 @@ export default function message(state = initialState, action) {
                 byID: {...state.byID, [botMessageID]: changeBotEntity},
                 chatIDs: [...state.chatIDs, ...[botMessageID]]
             };
-        case USER_MESSAGE:
+        case USER_MESSAGE:  //for get Message of User
             const {
                 userMessageID,
                 messageUserTime,
                 messageUser
             } = action.payload;
-            const changeUserEntity = {messageID: userMessageID, time: messageUserTime, text: messageUser, type: 'user'};
+            const changeUserEntity = {
+                messageID: userMessageID,
+                time: messageUserTime,
+                text: messageUser,
+                type: 'user'};
 
             return {
                 ...state,

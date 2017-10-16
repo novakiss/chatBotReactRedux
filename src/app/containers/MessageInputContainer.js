@@ -20,7 +20,6 @@ export const MessageInputContainer = ({currentStep, getResponse, message, change
                              score={response.score} questionId={response.questionId} userId={response.userId}
                              count={response.count} questionType={response.questionType} question={response.question}
                              sendToMessageContainer={message}/>
-
     }
     return <MessageInput disable={true}/>
 };

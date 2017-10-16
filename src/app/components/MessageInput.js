@@ -43,7 +43,7 @@ export class MessageInput extends React.Component {
     };
 
     handleSubmit = (e) => {
-        const {sendToMessageContainer,changeStep,sendToServer,questionId, score, userId, count, questionType, question} = this.props;
+        const {sendToMessageContainer, changeStep, sendToServer, questionId, score, userId, count, questionType, question} = this.props;
         e.preventDefault();
         const d = new Date();
         const time = d.toISOString();
@@ -53,7 +53,7 @@ export class MessageInput extends React.Component {
             userMessageID: Date.now()
         };
         sendToMessageContainer(newItem);
-        sendToServer(this.state.message, questionId,score,userId,count,questionType,question);
+        sendToServer(this.state.message, questionId, score, userId, count, questionType, question);
         changeStep();
         this.setState({message: ''});
     };

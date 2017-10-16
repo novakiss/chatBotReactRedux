@@ -9,13 +9,13 @@ const initialState = {
 
 export default function step(state = initialState, action) {
     switch (action.type) {
-        case SUCCESS:
+        case SUCCESS:  //if success Response
             return {...state, success: true, response: action.payload};
-        case ERROR:
+        case ERROR:  //if error Response
             return {...state, error: true};
-        case START:
+        case START:  //for start Transaction
             return {...state, loading: false};
-        case NEW_MESSAGE:
+        case NEW_MESSAGE:  //for reset fetchData-State
             return {...state, success: false, error: false, loading: false};
         default:
             return state;

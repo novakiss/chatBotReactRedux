@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 
 import {MessageInput} from '../../components/MessageInput';
 
-
 describe('test MessageInput', () => {
     let sendToMessageContainer;
     let changeStep;
