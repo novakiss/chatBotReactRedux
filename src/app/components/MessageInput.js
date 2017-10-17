@@ -63,7 +63,7 @@ export class MessageInput extends React.Component {
         return <div className={form}>
             <form>
                 <input className={input} onChange={this.handleChange} value={this.state.message}
-                       placeholder="Type your answer here..."/>
+                       placeholder="Geben Sie Ihre Antwort hier ein..."/>
                 {this.state.message === '' ?
                     <button className={button} onClick={this.handleSubmit} type="submit" disabled={true}>
                         Senden

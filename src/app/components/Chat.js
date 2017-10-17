@@ -55,7 +55,7 @@ export class Chat extends React.Component {
             <div className={message}>
                 <div className={chat}>
                     <img src={bot} alt="avatar" width='56px' height='56px'/>
-                    <div className={questionInput}>Symptom Input eingeben?</div>
+                    <div className={questionInput}>Bitte geben Sie Ihres Symptom ein?</div>
                 </div>
                 {this.props.ids.map(id => <MessageContainer key={id} id={id} ref={ele => this.scrollDiv = ele}/>)}
             </div>)

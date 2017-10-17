@@ -72,7 +72,7 @@ export class ChatBot extends React.Component {
                     <MessageInputContainer/>
                 </div>
                 <div className={medics}>
-                    <div className={headMedics}>5 besten Medikamente</div>
+                    <div className={headMedics}>5 bestmögliches Medikamente</div>
                     <MedicsContainer/>
                 </div>
             </div>
