@@ -16,7 +16,7 @@ const expectedChangeStepToQuestionStep = [{
 }];
 
 describe('test change step', () => {
-    it('test change Step', () => {
+    it('Step should change to Question Step', () => {
         store.dispatch(changeStepToQuestionStep());
         expect(store.getActions()).toEqual(expectedChangeStepToQuestionStep);
     });

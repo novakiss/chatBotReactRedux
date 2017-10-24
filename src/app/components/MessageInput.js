@@ -43,7 +43,7 @@ export class MessageInput extends React.Component {
     };
 
     handleSubmit = (e) => {
-        const {sendToMessageContainer,changeStep,sendToServer,questionId, score, userId, count, questionType, question} = this.props;
+        const {sendToMessageContainer, changeStep, sendToServer, questionId, score, userId, count, questionType, question} = this.props;
         e.preventDefault();
         const d = new Date();
         const time = d.toISOString();
@@ -53,7 +53,7 @@ export class MessageInput extends React.Component {
             userMessageID: Date.now()
         };
         sendToMessageContainer(newItem);
-        sendToServer(this.state.message, questionId,score,userId,count,questionType,question);
+        sendToServer(this.state.message, questionId, score, userId, count, questionType, question);
         changeStep();
         this.setState({message: ''});
     };
@@ -63,7 +63,7 @@ export class MessageInput extends React.Component {
         return <div className={form}>
             <form>
                 <input className={input} onChange={this.handleChange} value={this.state.message}
-                       placeholder="Type your answer here..."/>
+                       placeholder="Geben Sie Ihre Antwort hier ein..."/>
                 {this.state.message === '' ?
                     <button className={button} onClick={this.handleSubmit} type="submit" disabled={true}>
                         Senden

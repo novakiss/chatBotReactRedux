@@ -1,7 +1,7 @@
 import React  from 'react';
 import {connect} from 'react-redux';
-import {messageSelector} from '../selectors';
 
+import {messageSelector} from '../selectors';
 import Chat from '../components/Chat';
 
 export const ChatContainer = ({chatIDs}) => {

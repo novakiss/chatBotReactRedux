@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
     CHANGE_STEP,
     ANSWER_STEP,
@@ -9,8 +11,6 @@ import {
     NEW_MESSAGE,
     USER_MESSAGE
 } from './constants';
-
-import axios from 'axios';
 
 export const changeStepToQuestionStep = () => changeStep(ANSWER_STEP);
 
@@ -44,10 +44,6 @@ export const getResponseFromServer = (data, questionId = 1, score = null, userId
         })
 };
 
-const messageError = (e) => ({
-    botMessageID: 'ErrorMessage',
-    question: e
-});
 const changeStep = (step) => (
     {type: CHANGE_STEP, payload: getNextStep(step)}
 );
@@ -72,8 +68,11 @@ const getBotMessage = (response) => ({
     payload: response
 });
 
-
 const newMessage = () => ({
     type: NEW_MESSAGE
 });
 
+const messageError = (e) => ({
+    botMessageID: 'ErrorMessage',
+    question: e
+});

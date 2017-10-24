@@ -19,7 +19,7 @@ const expectedGetUserMessage = [{
 }];
 
 describe('test getUserMessageAction', () => {
-    it('test this Action', () => {
+    it('Action should return Message', () => {
         store.dispatch(getUserMessage(message));
         expect(store.getActions()).toEqual(expectedGetUserMessage);
     });

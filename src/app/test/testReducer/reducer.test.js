@@ -1,4 +1,5 @@
 import reducers from '../../reducer';
+
 import {ANSWER_STEP} from '../../constants';
 
 const expectedInitialState = {
@@ -19,12 +20,10 @@ const expectedInitialState = {
     }
 };
 
-
 describe('reducers', () => {
     it('should all Initial State', () => {
         let state;
         state = reducers(undefined, {});
         expect(state).toEqual(expectedInitialState)
     });
-
 });

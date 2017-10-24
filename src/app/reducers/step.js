@@ -6,7 +6,7 @@ const initialState = {
 
 export default function step(state = initialState, action) {
     switch (action.type) {
-        case CHANGE_STEP:
+        case CHANGE_STEP:  //for Step changes
             return {...state, currentStep: action.payload};
         default:
             return state;

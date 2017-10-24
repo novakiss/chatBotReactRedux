@@ -95,7 +95,6 @@ describe('step reducer', () => {
     it('test if action.type is User Message', () => {
         expect(message(undefined, action2)).toEqual(expectedState2)
     });
-
     it('test  if state is not init State', () => {
         expect(message(expectedState2, action3)).toEqual(expectedState3)
     });

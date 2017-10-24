@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 
 import {Message} from '../../components/Message';
 import {getUserMessage, changeStepToQuestionStep, getResponseFromServer} from '../../action';
+
 describe('test Message Component', () => {
     let wrapper;
     let text;

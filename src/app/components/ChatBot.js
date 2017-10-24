@@ -1,8 +1,10 @@
 import React from 'react';
 import withStyle from 'react-jss';
+
 import MessageInputContainer from '../containers/MessageInputContainer';
 import ChatContainer from '../containers/ChatContainer';
 import MedicsContainer from '../containers/MedicsContainer';
+
 const style = {
     chatBot: {
         width: '75%',
@@ -70,7 +72,7 @@ export class ChatBot extends React.Component {
                     <MessageInputContainer/>
                 </div>
                 <div className={medics}>
-                    <div className={headMedics}>5 besten Medikamente</div>
+                    <div className={headMedics}>5 bestmögliches Medikamente</div>
                     <MedicsContainer/>
                 </div>
             </div>
