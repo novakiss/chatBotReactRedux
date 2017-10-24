@@ -13,7 +13,7 @@ describe('test ChatContainer',()=>{
             chatBot: {
                 state: {
                    message :{
-                       chatIDs: [1,2]
+                       chatIDs: [1,3]
                    }
                 }
             }
