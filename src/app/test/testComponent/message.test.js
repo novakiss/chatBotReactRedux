@@ -141,7 +141,7 @@ describe('test Message Component', () => {
                                    changeStep={changeStepToQuestionStep}
                                    getResponse={getResponseFromServer}/>);
 
-        expect(wrapper.text()).toBe('Bitte gehen Sie zum Apotheke!!!');
+        expect(wrapper.text()).toBe('Ich kann keine Medikamente mit Ihren Anforderungen finden. Besuchen Sie bitte Ihren Atzt oder Apotheker!');
     });
 
     it('no Question more and Medics found "', () => {
@@ -155,7 +155,7 @@ describe('test Message Component', () => {
                                    changeStep={changeStepToQuestionStep}
                                    getResponse={getResponseFromServer}/>);
 
-        expect(wrapper.text()).toBe('Keine Frage mehr. Ihr beste Medikament ist Best Medic');
+        expect(wrapper.text()).toBe('Ich habe keine Frage für Sie mehr. Hier ist die besmögliches gefundene Medikament: Best Medic');
     });
 
     it('Cause Error Network', () => {
