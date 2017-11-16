@@ -186,13 +186,13 @@ export class Message extends React.Component {
             return (<div className={testBot}>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
                 <div className={bot}>Ich kann keine Medikamente mit Ihren Anforderungen finden. Besuchen Sie bitte Ihren
-                    Atzt oder Apotheker!
+                    Arzt oder Apotheker!
                 </div>
             </div>)
         } else {
             return (<div className={testBot}>
                 <img src={botImg} alt="avatar" width='56px' height='56px'/>
-                <div className={bot}>Ich habe keine Frage für Sie mehr. Hier ist die besmögliches gefundene
+                <div className={bot}>Ich habe keine Frage für Sie mehr. Hier ist das bestmögliche gefundene
                     Medikament: {medics[Object.keys(medics)[0]].name}</div>
             </div>);
         }
